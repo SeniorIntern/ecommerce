@@ -1,9 +1,19 @@
-import HeroCarousel from './HeroCarouse';
+import { HeroSection } from '@/components/HeroSection';
+import HomeBanner from '@/components/HomeBanner';
+import OffersBanner from '@/components/OffersBanner';
+import ProductsShowcase from '@/components/ProductShowcase';
+import Testimonials from '@/components/Testimonials';
+import TrustedCompanies from '@/components/TrustedCompanies';
 
 export default function Page() {
   return (
-    <div>
-      <HeroCarousel />
-    </div>
+    <section className="space-y-20">
+      <HeroSection />
+      <OffersBanner />
+      <ProductsShowcase />
+      <Testimonials />
+      <HomeBanner />
+      <TrustedCompanies />
+    </section>
   );
 }

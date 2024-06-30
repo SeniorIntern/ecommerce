@@ -2,12 +2,13 @@
 
 import { cn } from '@/lib/utils';
 import FurnModernLogo from '@/public/logo.png';
-import { LegalOptions, NavOptions } from '@/staticData';
+import { legalOptions, navOptions } from '@/staticData';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CSSProperties } from 'react';
 import { HorizontalPaddingContainer } from '../reusables/HorizontalPaddingContainer';
+import AcknowledgementBanner from '../AcknowledgementBanner';
 
 const footerGridContainerStyle: CSSProperties = {
   display: 'grid',
@@ -19,7 +20,7 @@ const Footer = () => {
   const pathname = usePathname();
 
   return (
-    <footer>
+    <footer className="border-t border-gray-200 bg-lime">
       <HorizontalPaddingContainer className="my-8 text-mutedtext">
         <div style={footerGridContainerStyle}>
           <div className="space-y-3">
@@ -35,7 +36,7 @@ const Footer = () => {
           <div>
             <p className="mb-6 font-extrabold text-black">Userful Links</p>
             <div className="flex flex-col space-y-3">
-              {NavOptions.map((item, idx) => (
+              {navOptions.map((item, idx) => (
                 <Link
                   className={cn(
                     pathname === item.href && 'font-extrabold text-accent'
@@ -59,7 +60,7 @@ const Footer = () => {
           <div>
             <p className="mb-6 font-extrabold text-black">Legal</p>
             <div className="flex flex-col space-y-3">
-              {LegalOptions.map((item, idx) => (
+              {legalOptions.map((item, idx) => (
                 <Link
                   className={cn(
                     pathname === item.href && 'font-extrabold text-accent'

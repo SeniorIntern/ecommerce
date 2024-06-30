@@ -1,15 +1,8 @@
-import Footer from '@/components/common/Footer';
-import NavBar from '@/components/common/NavBar';
 import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
 
-const roboto = Roboto({
-  weight: ['100', '300', '400', '500', '700', '900'],
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  display: 'swap'
-});
+const font = DM_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'ModenFurn',
@@ -23,13 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <div className='container'>
-          <NavBar />
-          {children}
-          <Footer />
-        </div>
-      </body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }

@@ -1,4 +1,4 @@
-const NavOptions = [
+const navOptions = [
   {
     href: '/',
     option: 'Home'
@@ -17,7 +17,7 @@ const NavOptions = [
   }
 ];
 
-const LegalOptions = [
+const legalOptions = [
   {
     href: '/privacy-policy',
     option: 'Privacy policy'
@@ -32,4 +32,15 @@ const LegalOptions = [
   }
 ];
 
-export { LegalOptions, NavOptions };
+const productCategories = [
+  { href: '/products', option: 'Vintage Furniture' },
+  { href: '/products', option: 'Kitchen Furniture' },
+  { href: '/products', option: 'Bed & Living Room' },
+  { href: '/products', option: 'Office Furniture' },
+  { href: '/products', option: 'Tools, equipments' },
+  { href: '/products', option: 'Sports and outdoor' },
+  { href: '/products', option: 'School & Hospitality' },
+  { href: '/products', option: 'New Furniture' }
+];
+
+export { legalOptions, navOptions,  productCategories };

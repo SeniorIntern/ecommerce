@@ -8,7 +8,7 @@ const ProductsShowcase = () => {
     <div>
       <HorizontalPaddingContainer className="space-y-3">
         <div className="flex justify-between">
-          <p className="text-3xl font-extrabold">Products</p>
+          <p className="text-3xl font-extrabold">Featured Products</p>
           <Link
             href={'/products'}
             className="flex items-center space-x-1 font-extrabold text-accent"

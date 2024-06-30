@@ -8,7 +8,7 @@ const HeroSectionSearchComponent = () => {
         className="border-none text-black focus-visible:ring-0 focus-visible:ring-offset-0"
         placeholder="Enter the product you want to buy..."
       />
-      <Button className="bg-accent px-8">Search</Button>
+      <Button className="px-8">Search</Button>
     </form>
   );
 };

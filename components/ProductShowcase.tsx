@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
-import { ProductsContainer } from './ProductsContainer';
+import FeaturedProductsContainer from './FeaturedProductsContainer';
 import { HorizontalPaddingContainer } from './reusables/HorizontalPaddingContainer';
 
 const ProductsShowcase = () => {
@@ -19,8 +19,7 @@ const ProductsShowcase = () => {
             </span>
           </Link>
         </div>
-
-        <ProductsContainer />
+        <FeaturedProductsContainer />
       </HorizontalPaddingContainer>
     </div>
   );

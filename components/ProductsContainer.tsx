@@ -1,38 +1,41 @@
+'use client';
+
+import { useProducts } from '@/hooks';
 import EmptyProductImage from '@/public/emptyProduct.webp';
 import Image from 'next/image';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
 import ProductCard from './common/ProductCard';
-import { cn } from '@/lib/utils';
 
-type Props = {
-  className?: string;
-};
+const ProductsContainer = () => {
+  const { data, isLoading, error } = useProducts({ page: 1, limit: 12 });
 
-export const ProductsContainer = ({ className }: Props) => {
+  console.log('products===', data);
+
   return (
-    <div className={cn(className)}>
+    <div className="grow">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-3">
-        {Array.from({ length: 7 }).map((_, idx) => (
-          <ProductCard key={idx} />
-        ))}
-      </div>
-
-      {/*
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {Array.from({ length: 7 }).map((_, idx) => (
+        {isLoading ? (
+          Array.from({ length: 7 }).map((_, idx) => (
             <ProductCardSkeleton key={idx} />
-          ))}
-        </div>
-
-      <div>
-        <Image
-          src={EmptyProductImage}
-          alt="Man and a empty container"
-          width={400}
-          height={400}
-          className="mx-auto"
-        />
-      </div> */}
+          ))
+        ) : data?.data.products.length ? (
+          data?.data.products.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))
+        ) : (
+        <div className=''>
+          <Image
+            src={EmptyProductImage}
+            alt="Man and a empty container" 
+            width={800}
+            height={800}
+            className="mx-auto"
+          />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
+
+export default ProductsContainer;

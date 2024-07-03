@@ -20,7 +20,7 @@ const Footer = () => {
   const pathname = usePathname();
 
   return (
-    <footer className="border-t border-gray-200 bg-lime">
+    <footer className="mt-20 border-t border-gray-200 bg-lime">
       <HorizontalPaddingContainer className="my-8 text-mutedtext">
         <div style={footerGridContainerStyle}>
           <div className="space-y-3">

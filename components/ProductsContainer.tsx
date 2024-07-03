@@ -12,7 +12,7 @@ const ProductsContainer = () => {
   console.log('products===', data);
 
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
       {isLoading ? (
         Array.from({ length: 7 }).map((_, idx) => (
           <ProductCardSkeleton key={idx} />

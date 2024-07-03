@@ -6,7 +6,7 @@ export default function Page({ params }: { params: { productId: string } }) {
   const { productId } = params;
 
   return (
-    <section>
+    <section className="my-6">
       <HorizontalPaddingContainer>
         <div className="space-y-16">
           <ProductPageCard productId={productId} />

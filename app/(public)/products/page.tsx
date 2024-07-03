@@ -12,10 +12,9 @@ export default function Page({ params, searchParams }: Props) {
   const { category, page } = searchParams;
 
   return (
-    <section>
+    <section className='my-6'>
       <HorizontalPaddingContainer>
         {JSON.stringify(category)}
-        <BreadcrumbBar />
         <div className="flex gap-12">
           <ProductFilterAside />
           <div className="grow">

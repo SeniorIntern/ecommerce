@@ -1,32 +1,39 @@
 import ProductPlaceholderImage from '@/public/product/productPlaceholder.jpg';
+import { Product } from '@/types';
 import Link from 'next/link';
 import Img from '../reusables/Img';
-import { Button } from '../ui/button';
+import ProductCardControls from './ProductCardControls';
+import { Badge } from '../ui/badge';
 
-const ProductCard = () => {
+type Props = {
+  product: Product;
+};
+
+const ProductCard = ({ product }: Props) => {
   return (
-    <Link href={`/products/1`}>
-      <div className="w-[268px] rounded-md border border-gray-200">
-        <div className="size-full h-[240px]">
+    <div className="rounded-md border border-gray-200">
+      <Link href={`/products/${product._id}`}>
+        <div className="relative h-[240px]">
           <Img
             className="size-full"
-            imgSrc={ProductPlaceholderImage}
+            imgSrc={ProductPlaceholderImage || product.mainImage.url}
             imgClass="rounded-t-md rounded-b-none"
           />
+          <Badge className="absolute bottom-2 right-2 bg-accent px-4">
+            foo
+          </Badge>
         </div>
-        <div className="space-y-2 p-3">
-          <p className="mb-6 font-extrabold">Silas Ratan Single Seater</p>
-          <p className="font-extrabold">$6,782.00</p>
-          <p className="font-bold text-mutedtext">12 available</p>
-          <div className="flex gap-2">
-            <Button className="w-1/2 text-white">Add to Cart</Button>
-            <Button variant="secondary" className="w-1/2">
-              Book now
-            </Button>
-          </div>
-        </div>
+      </Link>
+
+      <div className="space-y-2 p-3">
+        <p className="font-extrabold">{product.name}</p>
+        <p className="text-xl font-extrabold">${product.price}</p>
+        <p className="text-sm font-bold text-mutedtext">
+          {product.stock} available
+        </p>
+        <ProductCardControls product={product} />
       </div>
-    </Link>
+    </div>
   );
 };
 

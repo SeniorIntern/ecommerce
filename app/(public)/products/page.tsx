@@ -1,5 +1,5 @@
 import BreadcrumbBar from '@/components/common/BreadcrumbBar';
-import { ProductsContainer } from '@/components/ProductsContainer';
+import ProductsContainer from '@/components/ProductsContainer';
 import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPaddingContainer';
 import ProductFilterAside from './ProductFilterAside';
 
@@ -18,7 +18,9 @@ export default function Page({ params, searchParams }: Props) {
         <BreadcrumbBar />
         <div className="flex gap-12">
           <ProductFilterAside />
-          <ProductsContainer className="grow" />
+          <div className="grow">
+            <ProductsContainer />
+          </div>
         </div>
       </HorizontalPaddingContainer>
     </section>

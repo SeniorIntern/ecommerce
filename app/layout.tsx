@@ -1,3 +1,4 @@
+import QueryProvider from '@/QueryProvider';
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }

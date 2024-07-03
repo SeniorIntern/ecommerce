@@ -1,4 +1,3 @@
-import BreadcrumbBar from '@/components/common/BreadcrumbBar';
 import ProductsContainer from '@/components/ProductsContainer';
 import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPaddingContainer';
 import ProductFilterAside from './ProductFilterAside';
@@ -12,11 +11,10 @@ export default function Page({ params, searchParams }: Props) {
   const { category, page } = searchParams;
 
   return (
-    <section className='my-6'>
+    <section className="my-6">
       <HorizontalPaddingContainer>
-        {JSON.stringify(category)}
         <div className="flex gap-12">
-          <ProductFilterAside />
+          <ProductFilterAside categoryParam={category} />
           <div className="grow">
             <ProductsContainer />
           </div>

@@ -39,9 +39,6 @@ const ProductPageCard = ({ productId }: Props) => {
             ${data?.data.price}
           </p>
           <div>
-            <p className="font-bold text-mutedtext">
-              {data?.data.stock} available
-            </p>
             {data?.data && <ProductCardControls product={data?.data} />}
           </div>
         </div>

@@ -1,6 +1,7 @@
 import QueryProvider from '@/QueryProvider';
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.css';
 
 const font = DM_Sans({ subsets: ['latin'] });
@@ -18,6 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <Toaster
+          toastOptions={{ duration: 2000 }}
+          position="top-right"
+          richColors
+        />
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

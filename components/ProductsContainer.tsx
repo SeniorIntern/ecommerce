@@ -7,12 +7,10 @@ import { ProductCardSkeleton } from './ProductCardSkeleton';
 import ProductCard from './common/ProductCard';
 
 const ProductsContainer = () => {
-  const { data, isLoading, error } = useProducts({ page: 1, limit: 12 });
-
-  console.log('products===', data);
+  const { data, isLoading } = useProducts({ page: 1, limit: 12 });
 
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <article className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
       {isLoading ? (
         Array.from({ length: 7 }).map((_, idx) => (
           <ProductCardSkeleton key={idx} />
@@ -32,7 +30,7 @@ const ProductsContainer = () => {
           />
         </div>
       )}
-    </div>
+    </article>
   );
 };
 

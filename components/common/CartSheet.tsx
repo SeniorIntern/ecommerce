@@ -7,15 +7,14 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import ProductPlaceholderImage from '@/public/product/productPlaceholder.jpg';
 import useCartStore, { CartProduct } from '@/store/cart';
 import { MoveRight, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import Img from '../reusables/Img';
 import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import { Separator } from '../ui/separator';
+import CartItemCard from './CartItemCard';
 
 const Cart = () => {
   const cartItems = useCartStore((s) => s.cartItems);
@@ -31,7 +30,7 @@ const Cart = () => {
 };
 
 const CartSheet = () => {
-  const { cartItems } = useCartStore();
+  const { cartItems, removeProductFromCart } = useCartStore();
   const router = useRouter();
 
   const getCartItemsTotal = (items: CartProduct[]): number => {
@@ -56,22 +55,7 @@ const CartSheet = () => {
             {cartItems.length ? (
               <div className="flex flex-col gap-4">
                 {cartItems.map((item) => (
-                  <div
-                    key={item._id}
-                    className="flex gap-4 rounded-md border border-muted p-2"
-                  >
-                    <div className="h-20 w-1/4">
-                      <Img
-                        className="size-full"
-                        imgSrc={ProductPlaceholderImage}
-                      />
-                    </div>
-                    <div>
-                      <p>{item.name}</p>
-                      <p>Quantity: {item.quantity}</p>
-                      <p>Price: ${item.price}</p>
-                    </div>
-                  </div>
+                  <CartItemCard removeProductFromCart={removeProductFromCart} key={item._id} item={item} />
                 ))}
               </div>
             ) : (
@@ -86,8 +70,8 @@ const CartSheet = () => {
             <div className="my-8 space-y-3">
               <div className="flex justify-between">
                 <div>
-                  <p>Subtotal:</p>
-                  <p className="text-mutedtext">
+                  <p className="text-lg font-bold uppercase">Subtotal:</p>
+                  <p className="text-sm text-mutedtext">
                     Shipping and taxes calculated at checkout.
                   </p>
                 </div>
@@ -98,7 +82,7 @@ const CartSheet = () => {
                 className="w-full"
                 onClick={() => router.push('/checkout')}
               >
-                Book Now
+                Checkout Now
               </Button>
               <div className="mx-auto flex w-fit items-center text-sm text-accent">
                 <span className="text-black">or</span>

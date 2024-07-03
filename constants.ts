@@ -3,6 +3,7 @@ const COOKIE_NAME = 'session';
 const TOAST_KEY_AUTH = 'auth';
 const QUERY_KEY_PRODUCTS = ['products'];
 const QUERY_KEY_CATEGORIES = ['categories'];
+const QUERY_KEY_CATEGORY_PRODUCTS = ['category_products'];
 const TOAST_KEY_ANNOUNCE = 'announcement';
 const STANDARD_STALE_TIME = 1 * 60 * 1000;
 
@@ -10,6 +11,7 @@ export {
   COOKIE_NAME,
   PLACEHOLDER_PROFILE_IMAGE,
   QUERY_KEY_CATEGORIES,
+  QUERY_KEY_CATEGORY_PRODUCTS,
   QUERY_KEY_PRODUCTS,
   STANDARD_STALE_TIME,
   TOAST_KEY_ANNOUNCE,

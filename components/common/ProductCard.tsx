@@ -26,11 +26,10 @@ const ProductCard = ({ product }: Props) => {
       </Link>
 
       <div className="space-y-2 p-3">
-        <p className="font-extrabold">{product.name}</p>
+        <Link href={`/products/${product._id}`}>
+          <p className="font-extrabold">{product.name}</p>
+        </Link>
         <p className="text-xl font-extrabold">${product.price}</p>
-        <p className="text-sm font-bold text-mutedtext">
-          {product.stock} available
-        </p>
         <ProductCardControls product={product} />
       </div>
     </div>

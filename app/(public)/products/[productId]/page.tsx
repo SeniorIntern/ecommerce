@@ -1,5 +1,5 @@
 import ProductPageCard from '@/components/common/ProductPageCard';
-import ProductsContainer from '@/components/ProductsContainer';
+import ProductsGrid from '@/components/ProductsContainer';
 import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPaddingContainer';
 
 export default function Page({ params }: { params: { productId: string } }) {
@@ -13,7 +13,7 @@ export default function Page({ params }: { params: { productId: string } }) {
 
           <div className="space-y-3">
             <p className="text-2xl">Similar Products</p>
-            <ProductsContainer />
+            <ProductsGrid />
           </div>
         </div>
       </HorizontalPaddingContainer>

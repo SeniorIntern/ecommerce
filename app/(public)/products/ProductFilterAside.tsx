@@ -8,10 +8,14 @@ import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import CategoryCheckbox from './CategoryCheckbox';
 
-const ProductFilterAside = () => {
-  const router = useRouter();
+type Props = {
+  categoryParam: string;
+};
+
+const ProductFilterAside = ({ categoryParam }: Props) => {
   const { data, isLoading } = useCategories({ page: 1, limit: 40 });
-  console.log('categories===', data?.data.categories);
+
+  const router = useRouter();
 
   return (
     <div className="w-72 min-w-fit space-y-6">
@@ -41,7 +45,11 @@ const ProductFilterAside = () => {
               </div>
             ))
             : data?.data.categories.map((category) => (
-              <CategoryCheckbox key={category._id} option={category.name} />
+              <CategoryCheckbox
+                selectedCategory={categoryParam}
+                key={category._id}
+                option={category.name}
+              />
             ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { ProductFetchResponse } from '@/types';
+import { SingleProductsFetchResponse } from '@/types';
 
 import HttpService from './HttpService';
 
-export default new HttpService<ProductFetchResponse>('/products');
+export default new HttpService<SingleProductsFetchResponse>('/products');

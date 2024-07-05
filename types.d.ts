@@ -60,11 +60,45 @@ type CategoryFetchResponse = ApiResponseInfo & {
   };
 };
 
+type User = {
+  _id: string;
+  avatar: {
+    url: string;
+  };
+  email: string;
+  role: string;
+  isEmailVerified: boolean;
+  username: string;
+};
+
+type LoginReponse = ApiResponseInfo & {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+    user: User;
+  };
+};
+
+type RegistrationReponse = ApiResponseInfo & {
+  data: {
+    user: User;
+  };
+};
+
+type Session = {
+  userData: User;
+  expires: number;
+};
+
 export {
   PaginationParams,
   Product,
   AllProductsFetchResponse,
   SingleProductsFetchResponse,
   Category,
-  CategoryFetchResponse
+  CategoryFetchResponse,
+  User,
+  LoginReponse,
+  RegistrationReponse,
+  Session
 };

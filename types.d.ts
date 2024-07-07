@@ -51,6 +51,8 @@ type AllProductsFetchResponse = ApiResponseInfo & {
 type Category = {
   _id: string;
   name: string;
+  createdAt:string;
+  updatedAt:string;
 };
 
 type CategoryFetchResponse = ApiResponseInfo & {
@@ -66,7 +68,7 @@ type User = {
     url: string;
   };
   email: string;
-  role: string;
+  role: 'ADMIN' | 'SELLER';
   isEmailVerified: boolean;
   username: string;
 };

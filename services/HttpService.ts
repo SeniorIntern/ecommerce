@@ -7,9 +7,9 @@ class HttpService<T> {
     this.endpoint = endpoint;
   }
 
-  get = (page: number, limit: number, _id?: string) => {
+  get = (page: number, limit: number) => {
     return apiClient
-      .get<T>(_id ? this.endpoint : `${this.endpoint} + / +${_id}`, {
+      .get<T>(this.endpoint, {
         params: {
           limit,
           page

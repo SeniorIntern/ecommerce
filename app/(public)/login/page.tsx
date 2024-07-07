@@ -17,10 +17,15 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { COOKIES, TOAST_KEY_AUTH } from '@/constants';
+import { LoginReponse } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios, { AxiosError } from 'axios';
+import { setCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 const formSchema = z.object({
@@ -36,13 +41,30 @@ export default function Page() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: 'nik@gmail.com',
+      username: 'nik',
       password: 'nik@123'
     }
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const res = await axios.post<LoginReponse>(
+        'http://localhost:8080/api/v1/users/login',
+        values
+      );
+
+      toast.success(res.data.message, { id: TOAST_KEY_AUTH });
+
+      setCookie(COOKIES.ACCESS_TOKEN, res.data.data.accessToken);
+      setCookie(COOKIES.REFRESH_TOKEN, res.data.data.refreshToken);
+      setCookie(COOKIES.USER, JSON.stringify(res.data.data.user));
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        console.log('Axios Error.', err.message);
+        toast.error(err.response?.data?.message, { id: TOAST_KEY_AUTH });
+      }
+    }
+    router.push('/');
   }
 
   return (

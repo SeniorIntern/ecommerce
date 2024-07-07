@@ -1,5 +1,9 @@
 const PLACEHOLDER_PROFILE_IMAGE = 'https://picsum.photos/id/40/4106/2806';
-const COOKIE_NAME = 'session';
+const COOKIES = {
+  ACCESS_TOKEN: 'accessToken',
+  REFRESH_TOKEN: 'refreshToken',
+  USER: 'user'
+};
 const TOAST_KEY_AUTH = 'auth';
 const QUERY_KEY_PRODUCTS = ['products'];
 const QUERY_KEY_CATEGORIES = ['categories'];
@@ -10,7 +14,7 @@ const JWT_EXPIRATION_TIME = '30 days from now';
 const SESSION_EXPIRATION_TIME = 30 * 24 * 3600 * 1000;
 
 export {
-  COOKIE_NAME,
+  COOKIES,
   JWT_EXPIRATION_TIME,
   PLACEHOLDER_PROFILE_IMAGE,
   QUERY_KEY_CATEGORIES,

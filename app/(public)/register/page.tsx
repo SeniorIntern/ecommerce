@@ -17,10 +17,14 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { TOAST_KEY_AUTH } from '@/constants';
+import { RegistrationReponse } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 const formSchema = z.object({
@@ -45,8 +49,28 @@ export default function Page() {
     }
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const res = await axios.post<RegistrationReponse>(
+        'http://localhost:8080/api/v1/users/register',
+        values
+      );
+      toast.success(res.data.message, { id: TOAST_KEY_AUTH });
+      router.push('/login');
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        console.log('Axios Error.', err.message);
+
+        const errMessage = err.response?.data.errors as [
+          Record<string, string>
+        ];
+
+        toast.error(
+          errMessage.map((err) => Object.values(err).flat().join(', ')),
+          { id: TOAST_KEY_AUTH }
+        );
+      }
+    }
   }
 
   return (
@@ -66,7 +90,7 @@ export default function Page() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>Username</FormLabel>
                     <FormControl>
                       <Input placeholder="John" {...field} />
                     </FormControl>
@@ -98,7 +122,7 @@ export default function Page() {
                       Password
                     </FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input type="password" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

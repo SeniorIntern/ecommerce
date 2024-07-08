@@ -57,7 +57,7 @@ export default function Page() {
 
       setCookie(COOKIES.ACCESS_TOKEN, res.data.data.accessToken);
       setCookie(COOKIES.REFRESH_TOKEN, res.data.data.refreshToken);
-      setCookie(COOKIES.USER, JSON.stringify(res.data.data.user));
+      setCookie(COOKIES.USER, res.data.data.user);
     } catch (err) {
       if (err instanceof AxiosError) {
         console.log('Axios Error.', err.message);

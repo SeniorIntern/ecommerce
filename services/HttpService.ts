@@ -18,8 +18,10 @@ class HttpService<T> {
       .then((res) => res.data);
   };
 
-  getOneById = (id: string) => {
-    return apiClient.get<T>(this.endpoint + '/' + id).then((res) => res.data);
+  getOneById = (_id: string, page?: number, limit?: number) => {
+    return apiClient
+      .get<T>(this.endpoint + '/' + _id, { params: { page, limit } })
+      .then((res) => res.data);
   };
 
   /*

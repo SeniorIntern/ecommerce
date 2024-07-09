@@ -2,8 +2,8 @@ import ProductPlaceholderImage from '@/public/product/productPlaceholder.jpg';
 import { Product } from '@/types';
 import Link from 'next/link';
 import Img from '../reusables/Img';
-import ProductCardControls from './ProductCardControls';
 import { Badge } from '../ui/badge';
+import ProductCardControls from './ProductCardControls';
 
 type Props = {
   product: Product;
@@ -11,16 +11,16 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <div className="rounded-md border border-gray-200">
+    <div className="overflow-hidden rounded-t-lg rounded-md border border-gray-200">
       <Link href={`/products/${product._id}`}>
         <div className="relative h-[240px]">
           <Img
-            className="size-full"
+            className="size-full transition duration-300 ease-in-out hover:scale-110"
             imgSrc={ProductPlaceholderImage || product.mainImage.url}
-            imgClass="rounded-t-md rounded-b-none"
+            imgClass="rounded-none"
           />
           <Badge className="absolute bottom-2 right-2 bg-accent px-4">
-            foo
+            {product.category}
           </Badge>
         </div>
       </Link>

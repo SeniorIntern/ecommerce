@@ -10,6 +10,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import CartSheet from './CartSheet';
 
+import dynamic from 'next/dynamic';
+
+const UserDropDownMenu = dynamic(() => import('./UserDropDownMenu'), {
+  ssr: false
+});
+
 const NavBar = () => {
   const pathname = usePathname();
 
@@ -27,7 +33,7 @@ const NavBar = () => {
               href={item.href}
               className={cn(
                 pathname === item.href &&
-                'border-b-2 border-accent pb-6 text-accent'
+                  'border-b-2 border-accent pb-6 text-accent'
               )}
             >
               {item.option}
@@ -37,8 +43,8 @@ const NavBar = () => {
 
         <div className="flex items-center justify-between space-x-4">
           <SearchIcon />
-          <CartSheet/>
-          <Link href={'/login'}>Login</Link>
+          <CartSheet />
+          <UserDropDownMenu />
         </div>
       </HorizontalPaddingContainer>
     </header>

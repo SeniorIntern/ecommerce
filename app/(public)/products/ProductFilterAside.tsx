@@ -9,10 +9,10 @@ import { useRouter } from 'next/navigation';
 import CategoryCheckbox from './CategoryCheckbox';
 
 type Props = {
-  categoryParam: string;
+  selectedCategoryId: string;
 };
 
-const ProductFilterAside = ({ categoryParam }: Props) => {
+const ProductFilterAside = ({ selectedCategoryId }: Props) => {
   const { data, isLoading } = useCategories({ page: 1, limit: 40 });
 
   const router = useRouter();
@@ -46,9 +46,9 @@ const ProductFilterAside = ({ categoryParam }: Props) => {
             ))
             : data?.data.categories.map((category) => (
               <CategoryCheckbox
-                selectedCategory={categoryParam}
+                selectedCategoryId={selectedCategoryId}
                 key={category._id}
-                option={category.name}
+                category={category}
               />
             ))}
         </div>

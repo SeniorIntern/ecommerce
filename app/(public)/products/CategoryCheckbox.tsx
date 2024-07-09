@@ -2,29 +2,30 @@
 
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
+import { Category } from '@/types';
 import { useRouter } from 'next/navigation';
 
 type Props = {
-  option: string;
-  selectedCategory: string;
+  selectedCategoryId: string;
+  category: Category;
 };
 
-const CategoryCheckbox = ({ option, selectedCategory }: Props) => {
+const CategoryCheckbox = ({category, selectedCategoryId}: Props) => {
   const router = useRouter();
 
   return (
     <div className="flex items-center space-x-2">
       <Checkbox
-        id={option}
-        checked={selectedCategory === option}
+        id={category._id}
+        checked={category._id === selectedCategoryId}
         className={cn('border-accent')}
-        onClick={() => router.push(`?category=${option}`)}
+        onClick={() => router.push(`?category=${category._id}`)}
       />
       <label
-        htmlFor={option}
+        htmlFor={category.name}
         className="text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
-        {option}
+        {category.name}
       </label>
     </div>
   );

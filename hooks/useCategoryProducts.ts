@@ -8,7 +8,7 @@ type Params = PaginationParams & { _id: string };
 const useCategoryProducts = ({ _id, page, limit }: Params) => {
   return useQuery<AllProductsFetchResponse, Error>({
     queryKey: [QUERY_KEY_CATEGORY_PRODUCTS, _id],
-    queryFn: () => categoryProductService.get(page, limit, _id)
+    queryFn: () => categoryProductService.getOneById(_id, page, limit)
   });
 };
 

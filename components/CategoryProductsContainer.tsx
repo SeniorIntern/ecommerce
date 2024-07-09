@@ -9,18 +9,24 @@ import {
   PaginationNext,
   PaginationPrevious
 } from '@/components/ui/pagination';
-import { useProducts } from '@/hooks';
+import useCategoryProducts from '@/hooks/useCategoryProducts';
 import EmptyProductImage from '@/public/emptyProduct.webp';
 import Image from 'next/image';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
 import ProductCard from './common/ProductCard';
 
-const ProductsContainer = ({ page }: { page?: number }) => {
+type Props = {
+  page?: number;
+  categoryId: string;
+};
+
+const CategoryProductsContainer = ({ page, categoryId }: Props) => {
   const currentPage = page || 1;
-  const { data, isLoading } = useProducts({ page: currentPage, limit: 12 });
+  const { data, isLoading } = useCategoryProducts({ _id: categoryId, page: currentPage, limit: 12 })
 
   return (
     <div className="space-y-6">
+    <p>categoryId: {categoryId}</p>
       <article className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
         {isLoading ? (
           Array.from({ length: 7 }).map((_, idx) => (
@@ -92,4 +98,4 @@ const ProductsContainer = ({ page }: { page?: number }) => {
   );
 };
 
-export default ProductsContainer;
+export default CategoryProductsContainer;

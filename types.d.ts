@@ -51,8 +51,8 @@ type AllProductsFetchResponse = ApiResponseInfo & {
 type Category = {
   _id: string;
   name: string;
-  createdAt:string;
-  updatedAt:string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 type CategoryFetchResponse = ApiResponseInfo & {
@@ -92,15 +92,54 @@ type Session = {
   expires: number;
 };
 
+type Address = {
+  _id: string;
+  owner: string;
+  city: string;
+  country: string;
+  state: string;
+  addressLine1: string;
+  addressLine2: string;
+};
+
+type Order = {
+  _id: string;
+  address: Address;
+  coupon: null | string;
+  customer: {
+    _id: string;
+    email: string;
+    username: string;
+  };
+  discountedOrderPrice: number;
+  isPaymentDone: boolean;
+  orderPrice: number;
+  paymentId: string;
+  paymentProvider: 'PAYPAL';
+  status: 'PENDING' | 'DELIVERED' | 'CANCELLED';
+  totalOrderItems: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+type AllOrdersFetchResponse = ApiResponseInfo & {
+  data: PaginationInfo & {
+    orders: Order[];
+    totalOrders: string;
+  };
+};
+
 export {
-  PaginationParams,
-  Product,
   AllProductsFetchResponse,
-  SingleProductsFetchResponse,
   Category,
   CategoryFetchResponse,
-  User,
   LoginReponse,
+  PaginationParams,
+  Product,
   RegistrationReponse,
-  Session
+  Session,
+  SingleProductsFetchResponse,
+  Order,
+  AllOrdersFetchResponse,
+  User
 };

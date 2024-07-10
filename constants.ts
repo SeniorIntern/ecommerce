@@ -1,17 +1,24 @@
 const PLACEHOLDER_PROFILE_IMAGE = 'https://picsum.photos/id/40/4106/2806';
+
+// Query
+const QUERY_KEY_PRODUCTS = ['products'];
+const QUERY_KEY_ORDERS = ['orders'];
+const QUERY_KEY_CATEGORIES = ['categories'];
+const QUERY_KEY_CATEGORY_PRODUCTS = ['category_products'];
+
+// Toast
+const TOAST_KEY_AUTH = 'auth';
+const TOAST_KEY_ANNOUNCE = 'announcement';
+
+// JWT
+const STANDARD_STALE_TIME = 1 * 60 * 1000;
+const JWT_EXPIRATION_TIME = '30 days from now';
+const SESSION_EXPIRATION_TIME = 30 * 24 * 3600 * 1000;
 const COOKIES = {
   ACCESS_TOKEN: 'accessToken',
   REFRESH_TOKEN: 'refreshToken',
   USER: 'user'
 };
-const TOAST_KEY_AUTH = 'auth';
-const QUERY_KEY_PRODUCTS = ['products'];
-const QUERY_KEY_CATEGORIES = ['categories'];
-const QUERY_KEY_CATEGORY_PRODUCTS = ['category_products'];
-const TOAST_KEY_ANNOUNCE = 'announcement';
-const STANDARD_STALE_TIME = 1 * 60 * 1000;
-const JWT_EXPIRATION_TIME = '30 days from now';
-const SESSION_EXPIRATION_TIME = 30 * 24 * 3600 * 1000;
 
 export {
   COOKIES,
@@ -19,6 +26,7 @@ export {
   PLACEHOLDER_PROFILE_IMAGE,
   QUERY_KEY_CATEGORIES,
   QUERY_KEY_CATEGORY_PRODUCTS,
+  QUERY_KEY_ORDERS,
   QUERY_KEY_PRODUCTS,
   SESSION_EXPIRATION_TIME,
   STANDARD_STALE_TIME,

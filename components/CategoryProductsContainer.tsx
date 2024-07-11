@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious
 } from '@/components/ui/pagination';
-import useCategoryProducts from '@/hooks/useCategoryProducts';
+import { useCategoryProducts } from '@/hooks';
 import EmptyProductImage from '@/public/emptyProduct.webp';
 import Image from 'next/image';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
@@ -30,7 +30,6 @@ const CategoryProductsContainer = ({ page, categoryId }: Props) => {
 
   return (
     <div className="space-y-6">
-      <p>categoryId: {categoryId}</p>
       <article className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
         {isLoading ? (
           Array.from({ length: 7 }).map((_, idx) => (

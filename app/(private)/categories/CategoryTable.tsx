@@ -1,6 +1,6 @@
 'use client';
 
-import useCategories from '@/hooks/useCategories';
+import { useCategories } from '@/hooks';
 import { DataTable } from '../data-table';
 import TableSkeleton from '../TableSkeleton';
 import { columns } from './category-columns';

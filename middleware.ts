@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { COOKIES } from './constants';
-import { User } from './types';
 
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;

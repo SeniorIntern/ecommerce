@@ -1,6 +1,6 @@
 'use client';
 
-import useOrders from '@/hooks/useOrders';
+import { useOrders } from '@/hooks';
 import { DataTable } from '../data-table';
 import TableSkeleton from '../TableSkeleton';
 import { columns } from './orders-column';

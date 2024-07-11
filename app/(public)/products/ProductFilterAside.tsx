@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
-import useCategories from '@/hooks/useCategories';
+import { useCategories } from '@/hooks';
 import { X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import CategoryCheckbox from './CategoryCheckbox';

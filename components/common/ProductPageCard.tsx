@@ -1,6 +1,6 @@
 'use client';
 
-import useProduct from '@/hooks/useProduct';
+import { useProduct } from '@/hooks';
 import ProductPlaceholderImage from '@/public/product/productPlaceholder.jpg';
 import Img from '../reusables/Img';
 import ProductCardControls from './ProductCardControls';

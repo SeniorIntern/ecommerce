@@ -1,4 +1,4 @@
-import {  CategoryFetchResponse} from '@/types';
+import { CategoryFetchResponse } from '@/types';
 
 import HttpService from './HttpService';
 

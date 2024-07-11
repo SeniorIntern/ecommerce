@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CSSProperties } from 'react';
 import { HorizontalPaddingContainer } from '../reusables/HorizontalPaddingContainer';
-import AcknowledgementBanner from '../AcknowledgementBanner';
 
 const footerGridContainerStyle: CSSProperties = {
   display: 'grid',
@@ -54,6 +53,7 @@ const Footer = () => {
             <p className="mb-6 font-extrabold text-black">Helpful Links</p>
             <div className="flex flex-col space-y-3">
               <Link href={'/login'}>Login</Link>
+              <Link href={'/register'}>Register</Link>
             </div>
           </div>
 

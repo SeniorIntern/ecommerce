@@ -10,7 +10,7 @@ type Props = {
   category: Category;
 };
 
-const CategoryCheckbox = ({category, selectedCategoryId}: Props) => {
+const CategoryCheckbox = ({ category, selectedCategoryId }: Props) => {
   const router = useRouter();
 
   return (

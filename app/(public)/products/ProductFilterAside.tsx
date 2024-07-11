@@ -39,18 +39,18 @@ const ProductFilterAside = ({ selectedCategoryId }: Props) => {
         <div className="space-y-3">
           {isLoading
             ? Array.from({ length: 10 }).map((_, idx) => (
-              <div key={idx} className="flex gap-2">
-                <Skeleton className="size-5" />
-                <Skeleton className="h-5 w-36" />
-              </div>
-            ))
+                <div key={idx} className="flex gap-2">
+                  <Skeleton className="size-5" />
+                  <Skeleton className="h-5 w-36" />
+                </div>
+              ))
             : data?.data.categories.map((category) => (
-              <CategoryCheckbox
-                selectedCategoryId={selectedCategoryId}
-                key={category._id}
-                category={category}
-              />
-            ))}
+                <CategoryCheckbox
+                  selectedCategoryId={selectedCategoryId}
+                  key={category._id}
+                  category={category}
+                />
+              ))}
         </div>
       </div>
     </div>

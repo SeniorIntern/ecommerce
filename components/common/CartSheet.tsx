@@ -55,7 +55,11 @@ const CartSheet = () => {
             {cartItems.length ? (
               <div className="flex flex-col gap-4">
                 {cartItems.map((item) => (
-                  <CartItemCard removeProductFromCart={removeProductFromCart} key={item._id} item={item} />
+                  <CartItemCard
+                    removeProductFromCart={removeProductFromCart}
+                    key={item._id}
+                    item={item}
+                  />
                 ))}
               </div>
             ) : (

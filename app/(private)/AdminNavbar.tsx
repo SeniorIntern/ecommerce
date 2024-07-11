@@ -29,13 +29,17 @@ export const AdminNavbar = () => {
               <Link href={'/orders'}>Orders</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="focus:bg-secondary">
-              <Link href={'/users'}>Consumers</Link>
+              <Link href={'/users'}>Users</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="focus:bg-secondary">
               <Link href={'/categories'}>Categories</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="focus:bg-secondary">
               <Link href={'/inventory'}>Inventory</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="focus:bg-secondary">
+              LogOut
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

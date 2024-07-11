@@ -11,7 +11,7 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <div className="overflow-hidden rounded-t-lg rounded-md border border-gray-200">
+    <div className="overflow-hidden rounded-md rounded-t-lg border border-gray-200">
       <Link href={`/products/${product._id}`}>
         <div className="relative h-[240px]">
           <Img

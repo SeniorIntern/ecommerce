@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useOrders = ({ page, limit }: PaginationParams) => {
   return useQuery<AllOrdersFetchResponse, Error>({
-    queryKey: QUERY_KEY_ORDERS,
+    queryKey: [QUERY_KEY_ORDERS],
     queryFn: () => ordersService.get(page, limit)
   });
 };

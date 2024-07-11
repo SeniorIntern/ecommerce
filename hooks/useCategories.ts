@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useCategories = ({ page, limit }: PaginationParams) => {
   return useQuery<CategoryFetchResponse, Error>({
-    queryKey: QUERY_KEY_CATEGORIES,
+    queryKey: [QUERY_KEY_CATEGORIES],
     queryFn: () => categoryService.get(page, limit)
   });
 };

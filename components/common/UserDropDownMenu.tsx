@@ -41,16 +41,18 @@ const UserDropDown = () => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Profile</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {navOptions.map((item, idx) => (
           <DropdownMenuItem key={idx} className="focus:bg-accent/40">
-            <Link href={item.href} className="size-full focus:text-white">
+            <Link href={item.href} className="size-full">
               {item.label}
             </Link>
           </DropdownMenuItem>
         ))}
+        <DropdownMenuSeparator />
+        <DropdownMenuLabel>Log Out</DropdownMenuLabel>
       </DropdownMenuContent>
     </DropdownMenu>
   );

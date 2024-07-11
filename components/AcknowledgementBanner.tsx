@@ -1,6 +1,6 @@
 const AcknowledgementBanner = () => {
   return (
-    <div className="flex h-40 rounded-md overflow-hidden border border-gray-200 bg-white">
+    <div className="flex h-40 overflow-hidden rounded-md border border-gray-200 bg-white">
       <div className="h-full w-96 bg-orange-400"></div>
       <div className="grow p-10">
         <p>

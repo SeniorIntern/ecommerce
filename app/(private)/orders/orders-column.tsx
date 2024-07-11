@@ -31,5 +31,5 @@ export const columns: ColumnDef<Order>[] = [
   {
     accessorKey: 'address.city',
     header: 'Delivery Address'
-  },
+  }
 ];

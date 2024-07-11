@@ -43,4 +43,4 @@ const productCategories = [
   { href: '/products', option: 'New Furniture' }
 ];
 
-export { legalOptions, navOptions,  productCategories };
+export { legalOptions, navOptions, productCategories };

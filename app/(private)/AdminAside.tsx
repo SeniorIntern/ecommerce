@@ -47,7 +47,7 @@ const AdminAside = () => {
         className={cn(
           'flex items-center space-x-2 rounded-md px-1 py-2 text-mutedtext',
           pathname === '/categories' &&
-          'bg-accent text-white hover:bg-accent/80'
+            'bg-accent text-white hover:bg-accent/80'
         )}
       >
         <Group />

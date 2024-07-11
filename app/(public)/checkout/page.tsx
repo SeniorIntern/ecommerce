@@ -59,7 +59,7 @@ export default function Page() {
               <Trash size={16} />
             </Button>
             <Button className="flex items-center gap-2">
-              Proceed to checkout
+              Proceed to payment
               <ArrowRight size={16} />
             </Button>
           </div>

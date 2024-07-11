@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useProducts = ({ page, limit }: PaginationParams) => {
   return useQuery<AllProductsFetchResponse, Error>({
-    queryKey: QUERY_KEY_PRODUCTS,
+    queryKey: [QUERY_KEY_PRODUCTS, page, limit],
     queryFn: () => productsService.get(page, limit)
   });
 };

@@ -102,6 +102,10 @@ type Address = {
   addressLine2: string;
 };
 
+type AddressFetchResponse = ApiResponseInfo & {
+  data: Address;
+};
+
 type Order = {
   _id: string;
   address: Address;
@@ -129,17 +133,40 @@ type AllOrdersFetchResponse = ApiResponseInfo & {
   };
 };
 
+type Profile = {
+  _id: string;
+  avatar: {
+    _id: string;
+    url: string;
+  };
+  createdAt: Date;
+  email: string;
+  isEmailVerified: string;
+  loginType: string;
+  role: string;
+  updatedAt: Date;
+  username: string;
+};
+
+type ProfileFetchResponse = ApiResponseInfo & {
+  data: Profile;
+};
+
 export {
+  Address,
+  AddressFetchResponse,
+  AllOrdersFetchResponse,
   AllProductsFetchResponse,
   Category,
   CategoryFetchResponse,
   LoginReponse,
+  Order,
   PaginationParams,
   Product,
+  Profile,
+  ProfileFetchResponse,
   RegistrationReponse,
   Session,
   SingleProductsFetchResponse,
-  Order,
-  AllOrdersFetchResponse,
   User
 };

@@ -1,7 +1,7 @@
+import CategoryProductsContainer from '@/components/CategoryProductsContainer';
 import ProductsContainer from '@/components/ProductsContainer';
 import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPaddingContainer';
 import ProductFilterAside from './ProductFilterAside';
-import CategoryProductsContainer from '@/components/CategoryProductsContainer';
 
 type Props = {
   params: { productId: string };

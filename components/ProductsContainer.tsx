@@ -11,13 +11,30 @@ import {
 } from '@/components/ui/pagination';
 import { useProducts } from '@/hooks';
 import EmptyProductImage from '@/public/emptyProduct.webp';
+import { Product } from '@/types';
+import _ from 'lodash';
 import Image from 'next/image';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
 import ProductCard from './common/ProductCard';
 
-const ProductsContainer = ({ page }: { page?: number }) => {
+type Props = {
+  page?: number;
+  searchKeyword?: string;
+};
+
+const ProductsContainer = ({ page, searchKeyword }: Props) => {
   const currentPage = page || 1;
-  const { data, isLoading } = useProducts({ page: currentPage, limit: 12 });
+  const { data, isLoading } = useProducts({
+    page: currentPage,
+    limit: searchKeyword ? 500 : 12
+  });
+
+  const filteredProducts = (keyword: string): Product[] => {
+    const filterResults = _.filter(data?.data.products, (val) =>
+      val.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+    return filterResults;
+  };
 
   return (
     <div className="space-y-6">
@@ -25,6 +42,10 @@ const ProductsContainer = ({ page }: { page?: number }) => {
         {isLoading ? (
           Array.from({ length: 7 }).map((_, idx) => (
             <ProductCardSkeleton key={idx} />
+          ))
+        ) : searchKeyword ? (
+          filteredProducts(searchKeyword).map((product) => (
+            <ProductCard product={product} key={product._id} />
           ))
         ) : data?.data.products.length ? (
           data?.data.products.map((product) => (
@@ -43,51 +64,53 @@ const ProductsContainer = ({ page }: { page?: number }) => {
         )}
       </article>
 
-      <Pagination className="">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={
-                data?.data.hasPrevPage
-                  ? `/products/?page=${data.data.prevPage}`
-                  : '/products'
-              }
-            />
-          </PaginationItem>
+      {!searchKeyword && (
+        <Pagination className="">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                href={
+                  data?.data.hasPrevPage
+                    ? `/products/?page=${data.data.prevPage}`
+                    : '/products'
+                }
+              />
+            </PaginationItem>
 
-          <PaginationItem>
-            <PaginationLink
-              className=""
-              href={`/products?page=${data?.data.page}`}
-            >
-              {data?.data.page}
-            </PaginationLink>
-          </PaginationItem>
+            <PaginationItem>
+              <PaginationLink
+                className=""
+                href={`/products?page=${data?.data.page}`}
+              >
+                {data?.data.page}
+              </PaginationLink>
+            </PaginationItem>
 
-          <PaginationItem>
-            <PaginationNext
-              href={
-                data?.data.hasNextPage
-                  ? `/products/?page=${data.data.nextPage}`
-                  : `/products/${data?.data.page}`
-              }
-            />
-          </PaginationItem>
+            <PaginationItem>
+              <PaginationNext
+                href={
+                  data?.data.hasNextPage
+                    ? `/products/?page=${data.data.nextPage}`
+                    : `/products/${data?.data.page}`
+                }
+              />
+            </PaginationItem>
 
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
 
-          <PaginationItem>
-            <PaginationLink
-              className=""
-              href={`/products/?page=${data?.data.totalPages}`}
-            >
-              {data?.data.totalPages}
-            </PaginationLink>
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            <PaginationItem>
+              <PaginationLink
+                className=""
+                href={`/products/?page=${data?.data.totalPages}`}
+              >
+                {data?.data.totalPages}
+              </PaginationLink>
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
     </div>
   );
 };

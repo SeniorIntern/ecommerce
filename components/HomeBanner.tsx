@@ -4,7 +4,7 @@ import Img from './reusables/Img';
 
 const HomeBanner = () => {
   return (
-    <HorizontalPaddingContainer className='h-56'>
+    <HorizontalPaddingContainer className="h-56">
       <Img
         imgSrc={SecondBannerImage}
         alt="Banner Image"

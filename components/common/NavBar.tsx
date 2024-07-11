@@ -4,13 +4,14 @@ import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPad
 import { cn } from '@/lib/utils';
 import FurnModernLogo from '@/public/logo.png';
 import { navOptions } from '@/staticData';
-import { SearchIcon } from 'lucide-react';
+import { SearchIcon, X } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import CartSheet from './CartSheet';
-
-import dynamic from 'next/dynamic';
+import SearchInput from './SearchInput';
 
 const UserDropDownMenu = dynamic(() => import('./UserDropDownMenu'), {
   ssr: false
@@ -18,6 +19,8 @@ const UserDropDownMenu = dynamic(() => import('./UserDropDownMenu'), {
 
 const NavBar = () => {
   const pathname = usePathname();
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const toggleSearch = () => setShowSearchInput((val) => !val);
 
   return (
     <header className="border-b border-muted py-3">
@@ -26,23 +29,31 @@ const NavBar = () => {
           <Image src={FurnModernLogo} width={140} alt="FurnModern Logo" />
         </Link>
 
-        <nav className="space-x-6">
-          {navOptions.map((item, idx) => (
-            <Link
-              key={idx}
-              href={item.href}
-              className={cn(
-                pathname === item.href &&
-                  'border-b-2 border-accent pb-6 text-accent'
-              )}
-            >
-              {item.option}
-            </Link>
-          ))}
-        </nav>
+        {showSearchInput ? (
+          <SearchInput toggleSearch={toggleSearch} />
+        ) : (
+          <nav className="space-x-6">
+            {navOptions.map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.href}
+                className={cn(
+                  pathname === item.href &&
+                    'border-b-2 border-accent pb-6 text-accent'
+                )}
+              >
+                {item.option}
+              </Link>
+            ))}
+          </nav>
+        )}
 
         <div className="flex items-center justify-between space-x-4">
-          <SearchIcon />
+          {showSearchInput ? (
+            <X onClick={toggleSearch} className="cursor-pointer" />
+          ) : (
+            <SearchIcon onClick={toggleSearch} className="cursor-pointer" />
+          )}
           <CartSheet />
           <UserDropDownMenu />
         </div>

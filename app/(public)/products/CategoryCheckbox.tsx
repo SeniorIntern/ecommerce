@@ -22,8 +22,8 @@ const CategoryCheckbox = ({ category, selectedCategoryId }: Props) => {
         onClick={() => router.push(`?category=${category._id}`)}
       />
       <label
-        htmlFor={category.name}
-        className="text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        htmlFor={category._id}
+        className="cursor-pointer text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
         {category.name}
       </label>

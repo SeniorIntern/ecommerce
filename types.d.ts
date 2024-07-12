@@ -21,7 +21,7 @@ type PaginationParams = {
 
 type Product = {
   _id: string;
-  category: string;
+  category: Category;
   description: string;
   name: string;
   owner: string;

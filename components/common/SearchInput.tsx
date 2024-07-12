@@ -82,7 +82,7 @@ const SearchInput = ({ toggleSearch }: Props) => {
             <Img imgSrc={PLACEHOLDER_PRODUCT_IMAGE} className="h-full w-20" />
             <div>
               <p className="font-bold">{product.name}</p>
-              <p className="text-sm text-mutedtext">{product.category}</p>
+              <p className="text-sm text-mutedtext">{product.category.name}</p>
               <p>${product.price}</p>
             </div>
           </Link>

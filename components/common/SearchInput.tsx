@@ -4,7 +4,6 @@ import { useProducts } from '@/hooks';
 import { Product } from '@/types';
 import { useDebounce } from '@uidotdev/usehooks';
 import _ from 'lodash';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Img from '../reusables/Img';
@@ -43,7 +42,6 @@ const SearchInput = ({ toggleSearch }: Props) => {
     const formData = new FormData(e.currentTarget);
     const term = formData.get('search');
     if (typeof term === 'string') {
-      setSearchTerm(term);
       e.currentTarget.reset();
       e.currentTarget.focus();
       handleProductSearch(searchTerm);
@@ -70,12 +68,14 @@ const SearchInput = ({ toggleSearch }: Props) => {
         placeholder="Product name"
         className="h-full focus-visible:border-accent focus-visible:ring-0 focus-visible:ring-offset-0"
         onChange={handleChange}
-        onBlur={toggleSearch}
       />
       <div className="absolute z-50 w-full rounded-b-lg border border-gray-200 bg-white p-2">
         {results.map((product) => (
-          <Link
-            href={`/products/${product._id}`}
+          <div
+            onClick={() => {
+              router.push(`/products/${product._id}`);
+              toggleSearch();
+            }}
             className="flex h-20 gap-2"
             key={product._id}
           >
@@ -85,7 +85,7 @@ const SearchInput = ({ toggleSearch }: Props) => {
               <p className="text-sm text-mutedtext">{product.category.name}</p>
               <p>${product.price}</p>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </form>

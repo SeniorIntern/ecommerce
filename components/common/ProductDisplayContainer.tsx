@@ -1,8 +1,8 @@
 'use client';
 
-import { PLACEHOLDER_PRODUCT_IMAGE } from '@/constants';
 import { useProduct } from '@/hooks';
-import ProductPlaceholderImage from '@/public/product/productPlaceholder.jpg';
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
 import Img from '../reusables/Img';
 import ProductCardControls from './ProductCardControls';
 import ProductPageCardSkeleton from './ProductPageCardSkeleton';
@@ -13,23 +13,45 @@ type Props = {
 
 const ProductDisplayContainer = ({ productId }: Props) => {
   const { data, isLoading } = useProduct(productId);
+  const [displayImg, setDisplayImg] = useState('');
 
   if (isLoading) return <ProductPageCardSkeleton />;
 
   return (
-    <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
-      <div className="flex h-[500px] gap-2">
-        <div className="grid h-fit gap-3 bg-orange-200">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <div
+        className={cn('h-[500px]', data?.data.subImages.length && 'flex gap-2')}
+      >
+        {data?.data.subImages.length && (
+          <div className="grid h-fit gap-2">
+            <Img
+              imgSrc={data.data.mainImage.url}
+              className="size-20 cursor-pointer"
+              onClick={() => setDisplayImg(data.data.mainImage.url)}
+              imgClass={cn(
+                displayImg === data.data.mainImage.url &&
+                'border border-2 border-accent rounded-md'
+              )}
+            />
+
+            {data?.data.subImages.map((item) => (
+              <Img
+                key={item._id}
+                imgSrc={item.url}
+                className="size-20 cursor-pointer"
+                onClick={() => setDisplayImg(item.url)}
+                imgClass={cn(
+                  displayImg === item.url &&
+                  'border border-2 border-accent rounded-md'
+                )}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className={cn('h-full', data?.data.subImages.length && 'grow')}>
           <Img
-            imgSrc={PLACEHOLDER_PRODUCT_IMAGE}
-            className="size-20 cursor-pointer"
-          />
-          <Img imgSrc={PLACEHOLDER_PRODUCT_IMAGE} className="size-20 cursor-pointer" />
-          <Img imgSrc={PLACEHOLDER_PRODUCT_IMAGE} className="size-20 cursor-pointer" />
-        </div>
-        <div className="h-full grow">
-          <Img
-            imgSrc={ProductPlaceholderImage || data?.data.mainImage}
+            imgSrc={displayImg || data?.data.mainImage.url}
             className="size-full"
           />
         </div>

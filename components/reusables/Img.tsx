@@ -8,6 +8,7 @@ type Props = {
   imgClass: string;
   sizes?: string;
   alt: string;
+  onClick?: () => void;
 };
 
 const Img = ({
@@ -15,13 +16,15 @@ const Img = ({
   className: containerClass,
   imgClass,
   sizes = '33vw, (max-width: 768px) 50vw, (max-width: 1200px) 100vw',
-  alt
+  alt,
+  onClick
 }: Partial<Props>) => {
   return (
     <div className={cn('relative size-10', containerClass)}>
       <Image
         src={imgSrc || PLACEHOLDER_PRODUCT_IMAGE}
         alt={alt || 'placeholder image'}
+        onClick={onClick}
         fill
         sizes={sizes}
         className={cn('rounded-md object-cover', imgClass)}

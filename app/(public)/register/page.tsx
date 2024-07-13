@@ -61,14 +61,18 @@ export default function Page() {
       if (err instanceof AxiosError) {
         console.log('Axios Error.', err.message);
 
-        const errMessage = err.response?.data.errors as [
-          Record<string, string>
-        ];
+        if (err.response?.data.errors.length) {
+          const errMessage = err.response?.data.errors as [
+            Record<string, string>
+          ];
 
-        toast.error(
-          errMessage.map((err) => Object.values(err).flat().join(', ')),
-          { id: TOAST_KEY_AUTH }
-        );
+          toast.error(
+            errMessage.map((err) => Object.values(err).flat().join(', ')),
+            { id: TOAST_KEY_AUTH }
+          );
+        } else {
+          toast.error(err.response?.data.message, { id: TOAST_KEY_AUTH });
+        }
       }
     }
   }

@@ -19,7 +19,7 @@ const ProductCard = ({ product }: Props) => {
             imgSrc={ProductPlaceholderImage || product.mainImage.url}
             imgClass="rounded-none"
           />
-          <Badge variant='secondary' className="absolute bottom-2 right-2 px-4">
+          <Badge variant="secondary" className="absolute bottom-2 right-2 px-4">
             {product.category.name}
           </Badge>
         </div>

@@ -9,19 +9,13 @@ import { usePathname } from 'next/navigation';
 import { CSSProperties } from 'react';
 import { HorizontalPaddingContainer } from '../reusables/HorizontalPaddingContainer';
 
-const footerGridContainerStyle: CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: '40fr 20fr 20fr 20fr',
-  marginBottom: '4rem'
-};
-
 const Footer = () => {
   const pathname = usePathname();
 
   return (
     <footer className="mt-20 border-t border-gray-200 bg-lime">
       <HorizontalPaddingContainer className="my-8 text-mutedtext">
-        <div style={footerGridContainerStyle}>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="space-y-3">
             <Link href={'/'}>
               <Image src={FurnModernLogo} width={120} alt="FurnModern Logo" />
@@ -32,50 +26,53 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
-            <p className="mb-6 font-extrabold text-black">Userful Links</p>
-            <div className="flex flex-col space-y-3">
-              {navOptions.map((item, idx) => (
-                <Link
-                  className={cn(
-                    pathname === item.href && 'font-extrabold text-accent'
-                  )}
-                  href={item.href}
-                  key={idx}
-                >
-                  {item.option}
-                </Link>
-              ))}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
+              <p className="mb-4 font-extrabold text-black">Userful Links</p>
+              <div className="flex flex-col space-y-3">
+                {navOptions.map((item, idx) => (
+                  <Link
+                    className={cn(
+                      pathname === item.href && 'font-extrabold text-accent'
+                    )}
+                    href={item.href}
+                    key={idx}
+                  >
+                    {item.option}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <p className="mb-6 font-extrabold text-black">Helpful Links</p>
-            <div className="flex flex-col space-y-3">
-              <Link href={'/login'}>Login</Link>
-              <Link href={'/register'}>Register</Link>
+            <div>
+              <p className="mb-4 font-extrabold text-black">Helpful Links</p>
+              <div className="flex flex-col space-y-3">
+                <Link href={'/login'}>Login</Link>
+                <Link href={'/register'}>Register</Link>
+                <Link href={'/dashboard'}>Dashboard</Link>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <p className="mb-6 font-extrabold text-black">Legal</p>
-            <div className="flex flex-col space-y-3">
-              {legalOptions.map((item, idx) => (
-                <Link
-                  className={cn(
-                    pathname === item.href && 'font-extrabold text-accent'
-                  )}
-                  href={item.href}
-                  key={idx}
-                >
-                  {item.option}
-                </Link>
-              ))}
+            <div>
+              <p className="mb-4 font-extrabold text-black">Legal</p>
+              <div className="flex flex-col space-y-3">
+                {legalOptions.map((item, idx) => (
+                  <Link
+                    className={cn(
+                      pathname === item.href && 'font-extrabold text-accent'
+                    )}
+                    href={item.href}
+                    key={idx}
+                  >
+                    {item.option}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        <p className="text-center">
+        <p className="mt-8 text-center">
           © 2024. The Modern Furn. All rights reserved.
         </p>
       </HorizontalPaddingContainer>

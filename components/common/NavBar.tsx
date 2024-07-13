@@ -10,11 +10,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Skeleton } from '../ui/skeleton';
 import CartSheet from './CartSheet';
 import SearchInput from './SearchInput';
+import Logout from './Logout';
+import UserNavbarControls from './UserNavbarControls';
 
 const UserDropDownMenu = dynamic(() => import('./UserDropDownMenu'), {
-  ssr: false
+  ssr: false,
+  loading: () => <Skeleton className="size-8 rounded-full bg-gray-200" />
 });
 
 const NavBar = () => {

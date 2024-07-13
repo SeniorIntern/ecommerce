@@ -1,5 +1,3 @@
-'use client';
-
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -12,6 +10,7 @@ import {
 import getCookieUser from '@/helpers/getCookieUser';
 import { isNull } from 'lodash';
 import Link from 'next/link';
+import Logout from './Logout';
 
 const UserDropDown = () => {
   const user = getCookieUser();
@@ -42,7 +41,7 @@ const UserDropDown = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Profile</DropdownMenuLabel>
+        <DropdownMenuLabel>{user.username.toUpperCase()}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {navOptions.map((item, idx) => (
           <DropdownMenuItem key={idx} className="focus:bg-accent/40">
@@ -52,7 +51,7 @@ const UserDropDown = () => {
           </DropdownMenuItem>
         ))}
         <DropdownMenuSeparator />
-        <DropdownMenuLabel>Log Out</DropdownMenuLabel>
+        <Logout />
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -28,8 +28,8 @@ const RecentOrdersSkeleton = () => {
         <TableBody>
           {Array.from({ length: 6 }).map((item, idx) => (
             <TableRow key={idx}>
-              <TableCell className='bg-gray-400'>
-                <Skeleton className="h-3 size-full" />
+              <TableCell className="bg-gray-400">
+                <Skeleton className="size-full h-3" />
               </TableCell>
               <TableCell>
                 <Skeleton className="h-3 w-10" />

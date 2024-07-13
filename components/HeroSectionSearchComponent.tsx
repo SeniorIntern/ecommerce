@@ -1,14 +1,8 @@
-import { redirect } from 'next/navigation';
+import { searchProduct } from '@/actions/action';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 const HeroSectionSearchComponent = () => {
-  async function searchProduct(formData: FormData) {
-    'use server';
-    const keyword = formData.get('search');
-    redirect(`/products/search?search=${keyword}`);
-  }
-
   return (
     <form
       action={searchProduct}

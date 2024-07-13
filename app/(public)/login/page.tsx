@@ -58,13 +58,13 @@ export default function Page() {
       setCookie(COOKIES.ACCESS_TOKEN, res.data.data.accessToken);
       setCookie(COOKIES.REFRESH_TOKEN, res.data.data.refreshToken);
       setCookie(COOKIES.USER, res.data.data.user);
+      router.push('/');
     } catch (err) {
       if (err instanceof AxiosError) {
         console.log('Axios Error.', err.message);
         toast.error(err.response?.data?.message, { id: TOAST_KEY_AUTH });
       }
     }
-    router.push('/');
   }
 
   return (

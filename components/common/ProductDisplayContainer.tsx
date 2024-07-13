@@ -30,7 +30,7 @@ const ProductDisplayContainer = ({ productId }: Props) => {
               onClick={() => setDisplayImg(data.data.mainImage.url)}
               imgClass={cn(
                 displayImg === data.data.mainImage.url &&
-                'border border-2 border-accent rounded-md'
+                  'border border-2 border-accent rounded-md'
               )}
             />
 
@@ -42,7 +42,7 @@ const ProductDisplayContainer = ({ productId }: Props) => {
                 onClick={() => setDisplayImg(item.url)}
                 imgClass={cn(
                   displayImg === item.url &&
-                  'border border-2 border-accent rounded-md'
+                    'border border-2 border-accent rounded-md'
                 )}
               />
             ))}

@@ -44,7 +44,7 @@ const RecentOrders = () => {
               <TableCell>${order.discountedOrderPrice}</TableCell>
               <TableCell>{order.address.addressLine1}</TableCell>
               <TableCell>
-              <AddressInfoDialog address={order.address}/>
+                <AddressInfoDialog address={order.address} />
               </TableCell>
             </TableRow>
           ))}

@@ -1,4 +1,4 @@
-import SecondBannerImage from '@/public/SecondBannerImage.png';
+import SecondBannerImage from '@/public/secondBannerImage.png';
 import { HorizontalPaddingContainer } from './reusables/HorizontalPaddingContainer';
 import Img from './reusables/Img';
 

@@ -14,15 +14,18 @@ import EmptyProductImage from '@/public/emptyProduct.webp';
 import { Product } from '@/types';
 import _ from 'lodash';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { ProductCardSkeleton } from './ProductCardSkeleton';
 import ProductCard from './common/ProductCard';
 
 type Props = {
   page?: number;
-  searchKeyword?: string;
 };
 
-const ProductsContainer = ({ page, searchKeyword }: Props) => {
+const ProductsContainer = ({ page }: Props) => {
+  const searchParams = useSearchParams();
+  const searchKeyword = searchParams.get('search');
+
   const currentPage = page || 1;
   const { data, isLoading } = useProducts({
     page: currentPage,

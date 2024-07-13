@@ -76,7 +76,7 @@ const SearchInput = ({ toggleSearch }: Props) => {
               router.push(`/products/${product._id}`);
               toggleSearch();
             }}
-            className="flex h-20 gap-2"
+            className="my-2 flex h-20 cursor-pointer gap-2"
             key={product._id}
           >
             <Img imgSrc={PLACEHOLDER_PRODUCT_IMAGE} className="h-full w-20" />

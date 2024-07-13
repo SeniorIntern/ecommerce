@@ -1,5 +1,6 @@
 'use client';
 
+import { formatDate } from '@/helpers';
 import { Category } from '@/types';
 import { ColumnDef } from '@tanstack/react-table';
 
@@ -10,10 +11,12 @@ export const columns: ColumnDef<Category>[] = [
   },
   {
     accessorKey: 'createdAt',
-    header: 'Create Date'
+    header: 'Create Date',
+    cell: ({ row }) => formatDate(row.getValue('createdAt'))
   },
   {
     accessorKey: 'updatedAt',
-    header: 'Update Date'
+    header: 'Update Date',
+    cell: ({ row }) => formatDate(row.getValue('updatedAt'))
   }
 ];

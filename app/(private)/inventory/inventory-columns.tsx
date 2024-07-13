@@ -1,7 +1,9 @@
 'use client';
 
+import Img from '@/components/reusables/Img';
 import { Product } from '@/types';
 import { ColumnDef } from '@tanstack/react-table';
+import { Image } from 'lucide-react';
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -13,10 +15,6 @@ export const columns: ColumnDef<Product>[] = [
     header: 'Category'
   },
   {
-    accessorKey: 'description',
-    header: 'Amount'
-  },
-  {
     accessorKey: 'price',
     header: 'Price'
   },
@@ -26,10 +24,15 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     accessorKey: 'mainImage.url',
-    header: 'Main Image'
+    header: 'Main Image',
+    cell: ({ row }) => <Img imgSrc={row.getValue('mainImage.url')} />
   },
   {
+    id: 'subImages.length',
     accessorKey: 'subImages.length',
-    header: 'Sub Images'
+    header: 'Sub Images',
+    cell: ({ row }) => (
+      <Image />
+    )
   }
 ];

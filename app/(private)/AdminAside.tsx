@@ -22,6 +22,17 @@ const AdminAside = () => {
       </Link>
 
       <Link
+        href={'/users'}
+        className={cn(
+          'flex items-center space-x-2 rounded-md px-1 py-2 text-mutedtext',
+          pathname === '/users' && 'bg-accent text-white hover:bg-accent/80'
+        )}
+      >
+        <User />
+        <span>Users</span>
+      </Link>
+
+      <Link
         href={'/orders'}
         className={cn(
           'flex items-center space-x-2 rounded-md px-1 py-2 text-mutedtext',
@@ -33,21 +44,11 @@ const AdminAside = () => {
       </Link>
 
       <Link
-        href={'/users'}
-        className={cn(
-          'flex items-center space-x-2 rounded-md px-1 py-2 text-mutedtext',
-          pathname === '/users' && 'bg-accent text-white hover:bg-accent/80'
-        )}
-      >
-        <User />
-        <span>Users</span>
-      </Link>
-      <Link
         href={'/categories'}
         className={cn(
           'flex items-center space-x-2 rounded-md px-1 py-2 text-mutedtext',
           pathname === '/categories' &&
-            'bg-accent text-white hover:bg-accent/80'
+          'bg-accent text-white hover:bg-accent/80'
         )}
       >
         <Group />

@@ -43,4 +43,11 @@ const productCategories = [
   { href: '/products', option: 'New Furniture' }
 ];
 
-export { legalOptions, navOptions, productCategories };
+const adminNavOptions = [
+  { href: '/users', label: 'Users' },
+  { href: '/orders', label: 'Orders' },
+  { href: '/categories', label: 'Categories' },
+  { href: '/inventory', label: 'Inventory' }
+];
+
+export { adminNavOptions, legalOptions, navOptions, productCategories };

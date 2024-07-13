@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
+import { adminNavOptions } from '@/staticData';
 import Link from 'next/link';
 
 export const AdminNavbar = () => {
@@ -25,18 +26,11 @@ export const AdminNavbar = () => {
           <DropdownMenuContent>
             <DropdownMenuLabel>My Links</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="focus:bg-secondary">
-              <Link href={'/orders'}>Orders</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="focus:bg-secondary">
-              <Link href={'/users'}>Users</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="focus:bg-secondary">
-              <Link href={'/categories'}>Categories</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="focus:bg-secondary">
-              <Link href={'/inventory'}>Inventory</Link>
-            </DropdownMenuItem>
+            {adminNavOptions.map((item, idx) => (
+              <DropdownMenuItem key={idx} className="focus:bg-secondary">
+                <Link href={item.href}>{item.label}</Link>
+              </DropdownMenuItem>
+            ))}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="focus:bg-secondary">
               LogOut

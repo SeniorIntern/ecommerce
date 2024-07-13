@@ -1,5 +1,5 @@
 import { columns, Payment } from './columns';
-import { DataTable } from './data-table';
+import { PaymentsTable } from './payments-table';
 
 export default function Page() {
   const data: Payment[] = [
@@ -19,7 +19,7 @@ export default function Page() {
 
   return (
     <section className="container mx-auto py-10">
-      <DataTable data={data} columns={columns} />
+      <PaymentsTable data={data} columns={columns} />
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { UserTable } from './UserTable';
 
 export default function Page() {
   return (
@@ -10,6 +11,8 @@ export default function Page() {
           <Button>Add User</Button>
         </div>
       </div>
+
+      <UserTable/>
     </section>
   );
 }

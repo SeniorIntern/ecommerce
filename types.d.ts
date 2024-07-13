@@ -73,6 +73,13 @@ type User = {
   username: string;
 };
 
+type UsersFetchResponse = ApiResponseInfo & {
+  data: {
+    users: User[];
+    totalUsers: number;
+  };
+};
+
 type LoginReponse = ApiResponseInfo & {
   data: {
     accessToken: string;
@@ -168,5 +175,6 @@ export {
   RegistrationReponse,
   Session,
   SingleProductsFetchResponse,
-  User
+  User,
+  UsersFetchResponse
 };

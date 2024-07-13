@@ -6,6 +6,7 @@ const PLACEHOLDER_PRODUCT_IMAGE = PlaceholderImage;
 
 // Query
 const STANDARD_STALE_TIME = 1 * 60 * 1000;
+const QUERY_KEY_USERS = 'users';
 const QUERY_KEY_PRODUCTS = 'products';
 const QUERY_KEY_ORDERS = 'orders';
 const QUERY_KEY_CATEGORIES = 'categories';
@@ -36,6 +37,7 @@ export {
   QUERY_KEY_ORDERS,
   QUERY_KEY_PRODUCTS,
   QUERY_KEY_PROFILE,
+  QUERY_KEY_USERS,
   SESSION_EXPIRATION_TIME,
   STANDARD_STALE_TIME,
   TOAST_KEY_ANNOUNCE,

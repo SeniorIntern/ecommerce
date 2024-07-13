@@ -9,7 +9,7 @@ export const columns: ColumnDef<Product>[] = [
     header: 'Status'
   },
   {
-    accessorKey: 'category',
+    accessorKey: 'category.name',
     header: 'Category'
   },
   {

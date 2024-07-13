@@ -10,9 +10,9 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { useMyOrders } from '@/hooks';
-import moment from 'moment';
 import RecentOrdersSkeleton from './RecentOrdersSkeleton';
 import AddressInfoDialog from './AddressInfoDialog';
+import { formatDate } from '@/helpers';
 
 const RecentOrders = () => {
   const { data, isLoading } = useMyOrders({ page: 1, limit: 8 });
@@ -39,7 +39,7 @@ const RecentOrders = () => {
             <TableRow key={order._id}>
               <TableCell>{order._id}</TableCell>
               <TableCell className="font-medium">
-                {moment(order.createdAt).format('MMM Do YYY')}
+                {formatDate(order.createdAt)}
               </TableCell>
               <TableCell>${order.discountedOrderPrice}</TableCell>
               <TableCell>{order.address.addressLine1}</TableCell>

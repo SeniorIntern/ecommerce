@@ -1,6 +1,7 @@
 'use client';
 
 import { Skeleton } from '@/components/ui/skeleton';
+import { formatDate } from '@/helpers';
 import { useProfile } from '@/hooks';
 import moment from 'moment';
 
@@ -39,10 +40,12 @@ const ProfileInformation = () => {
             <p>Account Information</p>
             <div>
               <p>
-                Create Date - {moment(data?.data.createdAt).format('MMM Do YY')}
+                Create Date -
+                {data?.data.createdAt ? formatDate(data?.data.createdAt) : 'NA'}
               </p>
               <p>
-                Last Update - {moment(data?.data.email).format('MMM Do YY')}
+                Last Update -
+                {data?.data.email ? formatDate(data?.data.updatedAt) : 'NA'}
               </p>
             </div>
           </div>

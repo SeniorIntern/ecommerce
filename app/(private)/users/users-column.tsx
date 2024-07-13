@@ -21,6 +21,6 @@ export const columns: ColumnDef<User>[] = [
     id: 'avatar.url',
     accessorKey: 'avatar.url',
     header: 'Avatar',
-    cell: ({ row }) => <Img imgSrc={row.getValue('avatar.url')}/>
+    cell: ({ row }) => <Img imgSrc={row.getValue('avatar.url')} />
   }
 ];

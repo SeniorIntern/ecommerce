@@ -31,8 +31,6 @@ export const columns: ColumnDef<Product>[] = [
     id: 'subImages.length',
     accessorKey: 'subImages.length',
     header: 'Sub Images',
-    cell: ({ row }) => (
-      <Image />
-    )
+    cell: ({ row }) => <Image />
   }
 ];

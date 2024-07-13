@@ -11,20 +11,20 @@ export async function middleware(request: NextRequest) {
     path === '/users' ||
     path === '/inventory' ||
     path === '/categories';
-  const userPath = path === '/checkout';
 
-  const token = request.cookies.get(COOKIES.ACCESS_TOKEN)?.value;
+  const userPath = path === '/checkout' || path === 'confirm-payment';
+
   const user = request.cookies.get(COOKIES.USER)?.value;
 
-  if (!token && (adminPath || userPath)) {
+  if (!user && (adminPath || userPath)) {
     return NextResponse.redirect(new URL('/login', request.nextUrl));
   }
 
-  if (token && authPath) {
+  if (user && authPath) {
     return NextResponse.redirect(new URL('/', request.nextUrl));
   }
 
-  if (token && adminPath && user && JSON.parse(user).role !== 'ADMIN') {
+  if (user && adminPath && user && JSON.parse(user).role !== 'ADMIN') {
     return NextResponse.redirect(new URL('/', request.nextUrl));
   }
 }
@@ -34,6 +34,7 @@ export const config = {
     '/login',
     '/register',
     '/checkout',
+    '/confirm-payment',
     '/dashboard',
     '/orders',
     '/users',

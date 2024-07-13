@@ -13,8 +13,6 @@ import { useState } from 'react';
 import { Skeleton } from '../ui/skeleton';
 import CartSheet from './CartSheet';
 import SearchInput from './SearchInput';
-import Logout from './Logout';
-import UserNavbarControls from './UserNavbarControls';
 
 const UserDropDownMenu = dynamic(() => import('./UserDropDownMenu'), {
   ssr: false,

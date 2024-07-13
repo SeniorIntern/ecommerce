@@ -27,7 +27,7 @@ export default function Page() {
         <div className="my-4 space-y-6">
           {cartItems.length ? (
             <div className="w-1/2 rounded-md border border-gray-400 p-2">
-              <ScrollArea className="h-fit max-h-96 w-full">
+              <ScrollArea className="h-96 min-h-fit w-full">
                 <div className="flex flex-col gap-4">
                   {cartItems.map((item) => (
                     <CartItemCard

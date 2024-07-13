@@ -6,7 +6,6 @@ import { legalOptions, navOptions } from '@/staticData';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CSSProperties } from 'react';
 import { HorizontalPaddingContainer } from '../reusables/HorizontalPaddingContainer';
 
 const Footer = () => {

@@ -7,9 +7,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { TOAST_KEY_ANNOUNCE } from '@/constants';
 import useCartStore, { CartProduct } from '@/store/cart';
 import { ArrowRight, Trash } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 export default function Page() {
+  const router = useRouter();
   const { cartItems, resetCart, removeProductFromCart } = useCartStore();
 
   const getCartItemsTotal = (items: CartProduct[]): number => {
@@ -58,7 +60,10 @@ export default function Page() {
               Clear Cart
               <Trash size={16} />
             </Button>
-            <Button className="flex items-center gap-2">
+            <Button
+              onClick={() => router.push('/payment')}
+              className="flex items-center gap-2"
+            >
               Proceed to payment
               <ArrowRight size={16} />
             </Button>

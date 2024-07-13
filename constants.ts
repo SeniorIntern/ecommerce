@@ -17,6 +17,7 @@ const QUERY_KEY_ADDRESS = 'addresses';
 // Toast
 const TOAST_KEY_AUTH = 'auth';
 const TOAST_KEY_ANNOUNCE = 'announcement';
+const TOAST_KEY_STRIPE = 'stripe';
 
 // JWT
 const JWT_EXPIRATION_TIME = '30 days from now';
@@ -41,5 +42,6 @@ export {
   SESSION_EXPIRATION_TIME,
   STANDARD_STALE_TIME,
   TOAST_KEY_ANNOUNCE,
-  TOAST_KEY_AUTH
+  TOAST_KEY_AUTH,
+  TOAST_KEY_STRIPE
 };

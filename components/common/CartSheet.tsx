@@ -7,7 +7,8 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import useCartStore, { CartProduct } from '@/store/cart';
+import { getCartTotal } from '@/helpers';
+import useCartStore from '@/store/cart';
 import { MoveRight, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -32,14 +33,6 @@ const Cart = () => {
 const CartSheet = () => {
   const { cartItems, removeProductFromCart } = useCartStore();
   const router = useRouter();
-
-  const getCartItemsTotal = (items: CartProduct[]): number => {
-    let total = 0;
-    for (let i = 0; i < items.length; i++) {
-      total += items[i].price * items[i].quantity;
-    }
-    return total;
-  };
 
   return (
     <Sheet>
@@ -79,7 +72,7 @@ const CartSheet = () => {
                     Shipping and taxes calculated at checkout.
                   </p>
                 </div>
-                <p>${getCartItemsTotal(cartItems)}</p>
+                <p>${getCartTotal(cartItems)}</p>
               </div>
 
               <Button

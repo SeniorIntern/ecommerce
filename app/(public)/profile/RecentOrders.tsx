@@ -9,10 +9,10 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { useMyOrders } from '@/hooks';
-import RecentOrdersSkeleton from './RecentOrdersSkeleton';
-import AddressInfoDialog from './AddressInfoDialog';
 import { formatDate } from '@/helpers';
+import { useMyOrders } from '@/hooks';
+import AddressInfoDialog from './AddressInfoDialog';
+import RecentOrdersSkeleton from './RecentOrdersSkeleton';
 
 const RecentOrders = () => {
   const { data, isLoading } = useMyOrders({ page: 1, limit: 8 });

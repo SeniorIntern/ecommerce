@@ -18,9 +18,10 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { COOKIES, TOAST_KEY_AUTH } from '@/constants';
+import { apiClient } from '@/services';
 import { LoginReponse } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import { setCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -41,17 +42,14 @@ export default function Page() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: 'nik',
+      username: 'nikhil',
       password: 'nik@123'
     }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = await axios.post<LoginReponse>(
-        'http://localhost:8080/api/v1/users/login',
-        values
-      );
+      const res = await apiClient.post<LoginReponse>('/users/login', values);
 
       toast.success(res.data.message, { id: TOAST_KEY_AUTH });
 

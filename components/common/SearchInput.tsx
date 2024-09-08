@@ -16,6 +16,7 @@ const SearchInput = ({ toggleSearch }: Props) => {
   const router = useRouter();
 
   const { data, isLoading } = useProducts({ page: 1, limit: 500 });
+  if (!data) return;
 
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState<Product[]>([]);
@@ -24,7 +25,7 @@ const SearchInput = ({ toggleSearch }: Props) => {
 
   const handleProductFilter = (keyword: string) => {
     const filterResult = _.filter(data?.data.products, (val) =>
-      val.name.toLowerCase().includes(keyword.toLowerCase())
+      val.productName.toLowerCase().includes(keyword.toLowerCase())
     );
     setResults(filterResult);
   };
@@ -81,8 +82,10 @@ const SearchInput = ({ toggleSearch }: Props) => {
           >
             <Img imgSrc={PLACEHOLDER_PRODUCT_IMAGE} className="h-full w-20" />
             <div>
-              <p className="font-bold">{product.name}</p>
-              <p className="text-sm text-mutedtext">{product.category.name}</p>
+              <p className="font-bold">{product.productName}</p>
+              <p className="text-sm text-mutedtext">
+                {product.category.categoryName}
+              </p>
               <p>${product.price}</p>
             </div>
           </div>

@@ -34,7 +34,7 @@ const ProductsContainer = ({ page }: Props) => {
 
   const filteredProducts = (keyword: string): Product[] => {
     const filterResults = _.filter(data?.data.products, (val) =>
-      val.name.toLowerCase().includes(keyword.toLowerCase())
+      val.productName.toLowerCase().includes(keyword.toLowerCase())
     );
     return filterResults;
   };

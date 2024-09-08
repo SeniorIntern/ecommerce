@@ -26,7 +26,7 @@ const CartItemCard = ({ item, className, removeProductFromCart }: Props) => {
       <div className="flex grow items-start justify-between">
         <div>
           <Link href={`/products/${item._id}`}>
-            <p>{item.name}</p>
+            <p>{item.productName}</p>
           </Link>
           <p>Quantity: {item.quantity}</p>
           <p>

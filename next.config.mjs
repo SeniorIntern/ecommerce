@@ -14,7 +14,15 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'loremflickr.com'
       },
-      { protocol: 'https', hostname: 'cloudflare-ipfs.com' }
+      { protocol: 'https', hostname: 'cloudflare-ipfs.com' },
+      {
+        protocol: 'http',
+        hostname: 'res.cloudinary.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com'
+      }
     ]
   }
 };

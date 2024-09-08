@@ -23,18 +23,12 @@ type Product = {
   _id: string;
   category: Category;
   description: string;
-  name: string;
+  productName: string;
   owner: string;
   price: number;
   stock: number;
-  mainImage: {
-    _id: string;
-    url: string;
-  };
-  subImages: {
-    _id: string;
-    url: string;
-  }[];
+  mainImage: string;
+  subImages: string[];
 };
 
 type SingleProductsFetchResponse = ApiResponseInfo & {
@@ -50,7 +44,8 @@ type AllProductsFetchResponse = ApiResponseInfo & {
 
 type Category = {
   _id: string;
-  name: string;
+  categoryName: string;
+  owner: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -142,16 +137,14 @@ type AllOrdersFetchResponse = ApiResponseInfo & {
 
 type Profile = {
   _id: string;
-  avatar: {
-    _id: string;
-    url: string;
-  };
+  avatar: string;
   createdAt: Date;
   email: string;
   isEmailVerified: string;
   loginType: string;
-  role: string;
+  role?: string;
   updatedAt: Date;
+  fullName: string;
   username: string;
 };
 

@@ -25,24 +25,24 @@ const ProductDisplayContainer = ({ productId }: Props) => {
         {data?.data.subImages.length && (
           <div className="grid h-fit gap-2">
             <Img
-              imgSrc={data.data.mainImage.url}
+              imgSrc={data.data.mainImage}
               className="size-20 cursor-pointer"
-              onClick={() => setDisplayImg(data.data.mainImage.url)}
+              onClick={() => setDisplayImg(data.data.mainImage)}
               imgClass={cn(
-                displayImg === data.data.mainImage.url &&
-                  'border border-2 border-accent rounded-md'
+                displayImg === data.data.mainImage &&
+                'border border-2 border-accent rounded-md'
               )}
             />
 
-            {data?.data.subImages.map((item) => (
+            {data?.data.subImages.map((link, idx) => (
               <Img
-                key={item._id}
-                imgSrc={item.url}
+                key={idx}
+                imgSrc={link}
                 className="size-20 cursor-pointer"
-                onClick={() => setDisplayImg(item.url)}
+                onClick={() => setDisplayImg(link)}
                 imgClass={cn(
-                  displayImg === item.url &&
-                    'border border-2 border-accent rounded-md'
+                  displayImg === link &&
+                  'border border-2 border-accent rounded-md'
                 )}
               />
             ))}
@@ -51,14 +51,14 @@ const ProductDisplayContainer = ({ productId }: Props) => {
 
         <div className={cn('h-full', data?.data.subImages.length && 'grow')}>
           <Img
-            imgSrc={displayImg || data?.data.mainImage.url}
+            imgSrc={displayImg || data?.data.mainImage}
             className="size-full"
           />
         </div>
       </div>
 
       <div className="space-y-6">
-        <p className="text-2xl font-extrabold">{data?.data.name}</p>
+        <p className="text-2xl font-extrabold">{data?.data.productName}</p>
 
         <div className="space-y-3 text-mutedtext">
           <div>
@@ -68,7 +68,7 @@ const ProductDisplayContainer = ({ productId }: Props) => {
         </div>
 
         <div className="space-y-3 text-mutedtext">
-          <p>Type: {data?.data.category.name}</p>
+          <p>Type: {data?.data.category.categoryName}</p>
         </div>
 
         <div className="space-y-6">

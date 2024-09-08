@@ -16,18 +16,18 @@ const ProductCard = ({ product }: Props) => {
         <div className="relative h-[240px]">
           <Img
             className="size-full transition duration-300 ease-in-out hover:scale-110"
-            imgSrc={ProductPlaceholderImage || product.mainImage.url}
+            imgSrc={ProductPlaceholderImage || product.mainImage}
             imgClass="rounded-none"
           />
           <Badge variant="secondary" className="absolute bottom-2 right-2 px-4">
-            {product.category.name}
+            {product.category.categoryName}
           </Badge>
         </div>
       </Link>
 
       <div className="space-y-2 p-3">
         <Link href={`/products/${product._id}`}>
-          <p className="font-extrabold">{product.name}</p>
+          <p className="font-extrabold">{product.productName}</p>
         </Link>
         <p className="text-xl font-extrabold">${product.price}</p>
         <ProductCardControls product={product} />

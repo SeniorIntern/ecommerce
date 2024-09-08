@@ -25,7 +25,7 @@ const CategoryCheckbox = ({ category, selectedCategoryId }: Props) => {
         htmlFor={category._id}
         className="cursor-pointer text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
-        {category.name}
+        {category.categoryName}
       </label>
     </div>
   );

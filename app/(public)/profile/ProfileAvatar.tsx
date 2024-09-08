@@ -1,9 +1,9 @@
 'use client';
 
 import Img from '@/components/reusables/Img';
-import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useProfile } from '@/hooks';
+import ProfileAvatarUpdateDialog from './ProfileAvatarUpdateDialog';
 
 const ProfileAvatar = () => {
   const { data, isLoading } = useProfile();
@@ -18,12 +18,12 @@ const ProfileAvatar = () => {
   return (
     <div className="grid justify-center gap-4">
       <Img
-        imgSrc={data?.data.avatar.url}
+        imgSrc={data?.data.avatar}
         alt="Profile avatar"
         className="size-[300px]"
-        imgClass="rounded-full"
+        imgClass="rounded-full  border-[0.8px] border-accent"
       />
-      <Button>Update Avatar</Button>
+      <ProfileAvatarUpdateDialog/>
     </div>
   );
 };

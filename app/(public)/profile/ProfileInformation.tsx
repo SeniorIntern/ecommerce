@@ -14,7 +14,7 @@ const ProfileInformation = () => {
   const { fullName, username, email, createdAt, updatedAt } = data.data;
 
   return (
-    <article className="space-y-4">
+    <article className="space-y-2">
       <h2 className="text-xl">Profile Information</h2>
       {isLoading ? (
         <div className="grid min-h-40 grid-cols-1 justify-between gap-2 md:grid-cols-2 lg:grid-cols-3">
@@ -67,6 +67,7 @@ const ProfileInformation = () => {
           </div>
         </div>
       )}
+
       <ProfileInformationUpdateDialog />
     </article>
   );

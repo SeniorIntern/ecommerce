@@ -6,6 +6,8 @@ import { useProfile } from '@/hooks';
 import ProfileAvatarUpdateDialog from './ProfileAvatarUpdateDialog';
 
 const ProfileAvatar = () => {
+  console.log('ProfileAvatar component rendered!');
+
   const { data, isLoading } = useProfile();
   if (isLoading)
     return (
@@ -23,7 +25,7 @@ const ProfileAvatar = () => {
         className="size-[300px]"
         imgClass="rounded-full  border-[0.8px] border-accent"
       />
-      <ProfileAvatarUpdateDialog/>
+      <ProfileAvatarUpdateDialog />
     </div>
   );
 };

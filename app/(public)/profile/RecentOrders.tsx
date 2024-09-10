@@ -15,17 +15,19 @@ import AddressInfoDialog from './AddressInfoDialog';
 import RecentOrdersSkeleton from './RecentOrdersSkeleton';
 
 const RecentOrders = () => {
-  /*
-  const { data, isLoading } = useMyOrders({ page: 1, limit: 8 });
-
-  if (isLoading) RecentOrdersSkeleton;
-*/
   return (
-    <div>
+    <div className='space-y-2'>
       <h2 className="text-xl">Recent Orders</h2>
       <p>Under construction lol</p>
     </div>
   );
+
+  /* 
+  const { data, isLoading } = useMyOrders({ page: 1, limit: 8 });
+
+  if (isLoading) return (
+    <RecentOrdersSkeleton/>
+  )
 
   return (
     <div>
@@ -60,6 +62,7 @@ const RecentOrders = () => {
       </Table>
     </div>
   );
+*/
 };
 
 export default RecentOrders;

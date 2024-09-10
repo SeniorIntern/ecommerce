@@ -18,9 +18,10 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { TOAST_KEY_AUTH } from '@/constants';
+import { apiClient } from '@/services';
 import { RegistrationReponse } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios, { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -28,11 +29,20 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 
 const formSchema = z.object({
+  fullName: z
+    .string()
+    .min(3, { message: 'Full name cannot be less than 3 characters.' })
+    .max(50, {
+      message: 'Full name cannot be more than 120 characters long.'
+    }),
   email: z.string().email(),
   password: z.string().min(1, { message: 'Password is required.' }),
   username: z
     .string()
-    .min(3, { message: 'First name must be atleast 3 characters long.' })
+    .min(3, { message: 'Username must be atleast 3 characters long.' })
+    .max(50, {
+      message: 'Username cannot be more than 120 characters long.'
+    })
 });
 
 export type RegisterDataType = z.infer<typeof formSchema>;
@@ -43,6 +53,7 @@ export default function Page() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      fullName: '',
       email: '',
       password: '',
       username: ''
@@ -51,8 +62,8 @@ export default function Page() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = await axios.post<RegistrationReponse>(
-        'http://localhost:8080/api/v1/users/register',
+      const res = await apiClient.post<RegistrationReponse>(
+        '/users/register',
         values
       );
       toast.success(res.data.message, { id: TOAST_KEY_AUTH });
@@ -79,16 +90,30 @@ export default function Page() {
 
   return (
     <section>
-      <Card className="mx-auto my-16 max-w-sm">
+      <Card className="mx-auto my-10 max-w-sm">
         <CardHeader>
           <CardTitle className="text-xl">Sign Up</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+            Enter your information to create an account.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="John Smith" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control}
                 name="username"
@@ -126,7 +151,11 @@ export default function Page() {
                       Password
                     </FormLabel>
                     <FormControl>
-                      <Input type="password" {...field} />
+                      <Input
+                        type="password"
+                        placeholder="*********"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

@@ -8,8 +8,9 @@ type Props = {
   searchParams: { category: string; page: string };
 };
 
-export default function Page({ params, searchParams }: Props) {
+export default function Page({ params: _, searchParams }: Props) {
   const { category, page } = searchParams;
+  console.table({ category, page });
 
   return (
     <section className="my-6">

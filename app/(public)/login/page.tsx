@@ -51,7 +51,9 @@ export default function Page() {
     try {
       const res = await apiClient.post<LoginReponse>('/users/login', values);
 
-      toast.success(res.data.message, { id: TOAST_KEY_AUTH });
+      toast.success(res.data.message, {
+        id: TOAST_KEY_AUTH
+      });
 
       setCookie(COOKIES.ACCESS_TOKEN, res.data.data.accessToken);
       setCookie(COOKIES.REFRESH_TOKEN, res.data.data.refreshToken);

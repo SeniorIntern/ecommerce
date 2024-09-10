@@ -1,3 +1,4 @@
+import { TOAST_DEFAULT_DURATION } from '@/constants';
 import QueryProvider from '@/QueryProvider';
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
@@ -20,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <Toaster
-          toastOptions={{ duration: 2000 }}
+          toastOptions={{ duration: TOAST_DEFAULT_DURATION }}
           position="top-right"
           richColors
         />

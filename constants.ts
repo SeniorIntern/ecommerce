@@ -16,6 +16,7 @@ const QUERY_KEY_ADDRESS = 'addresses';
 
 // Toast
 const TOAST_KEY_AUTH = 'auth';
+const TOAST_DEFAULT_DURATION = 600; // ms
 const TOAST_KEY_ANNOUNCE = 'announcement';
 const TOAST_KEY_STRIPE = 'stripe';
 
@@ -41,6 +42,7 @@ export {
   QUERY_KEY_USERS,
   SESSION_EXPIRATION_TIME,
   STANDARD_STALE_TIME,
+  TOAST_DEFAULT_DURATION,
   TOAST_KEY_ANNOUNCE,
   TOAST_KEY_AUTH,
   TOAST_KEY_STRIPE

@@ -59,9 +59,7 @@ type CategoryFetchResponse = ApiResponseInfo & {
 
 type User = {
   _id: string;
-  avatar: {
-    url: string;
-  };
+  avatar: string;
   email: string;
   role: 'ADMIN' | 'SELLER';
   isEmailVerified: boolean;
@@ -152,11 +150,32 @@ type ProfileFetchResponse = ApiResponseInfo & {
   data: Profile;
 };
 
+type AvatarUploadResponse = ApiResponseInfo & {
+  data: {
+    _id: string;
+    avatar: string;
+  };
+};
+
+type ProfileInformationPatchResponse = ApiResponseInfo & {
+  data: {
+    _id: string;
+    username: string;
+    email: string;
+    fullName: string;
+  };
+};
+
+type ChangePasswordResponse = ApiResponseInfo & {
+
+}
+
 export {
   Address,
   AddressFetchResponse,
   AllOrdersFetchResponse,
   AllProductsFetchResponse,
+  AvatarUploadResponse,
   Category,
   CategoryFetchResponse,
   LoginReponse,
@@ -165,9 +184,11 @@ export {
   Product,
   Profile,
   ProfileFetchResponse,
+  ProfileInformationPatchResponse,
   RegistrationReponse,
   Session,
   SingleProductsFetchResponse,
   User,
-  UsersFetchResponse
+  UsersFetchResponse,
+ChangePasswordResponse
 };

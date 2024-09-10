@@ -1,5 +1,5 @@
 import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPaddingContainer';
-import ChangePassword from './ChangePassword';
+import ChangePasswordDialog from './ChangePasswordDialog';
 import ProfileAvatar from './ProfileAvatar';
 import ProfileGreetingHeader from './ProfileGreetingHeader';
 import ProfileInformation from './ProfileInformation';
@@ -13,7 +13,7 @@ export default function Page() {
         <ProfileAvatar />
         <ProfileInformation />
         <RecentOrders />
-        <ChangePassword/>
+        <ChangePasswordDialog/>
       </HorizontalPaddingContainer>
     </section>
   );

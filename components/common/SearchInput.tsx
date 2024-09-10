@@ -15,9 +15,6 @@ type Props = {
 const SearchInput = ({ toggleSearch }: Props) => {
   const router = useRouter();
 
-  const { data, isLoading } = useProducts({ page: 1, limit: 500 });
-  if (!data) return;
-
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState<Product[]>([]);
 
@@ -60,6 +57,9 @@ const SearchInput = ({ toggleSearch }: Props) => {
 
     searchProduct();
   }, [debouncedSearchTerm]);
+
+  const { data, isLoading } = useProducts({ page: 1, limit: 500 });
+  if (!data) return;
 
   return (
     <form className="relative ml-6 h-full grow" onSubmit={handleSubmit}>

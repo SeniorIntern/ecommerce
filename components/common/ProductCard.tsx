@@ -27,7 +27,11 @@ const ProductCard = ({ product }: Props) => {
 
       <div className="space-y-2 p-3">
         <Link href={`/products/${product._id}`}>
-          <p className="font-extrabold">{product.productName}</p>
+          <p className="font-extrabold">
+            {product.productName.length > 20
+              ? product.productName.slice(0, 20) + '...'
+              : product.productName}
+          </p>
         </Link>
         <p className="text-xl font-extrabold">${product.price}</p>
         <ProductCardControls product={product} />

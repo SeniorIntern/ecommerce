@@ -61,7 +61,7 @@ type User = {
   _id: string;
   avatar: string;
   email: string;
-  role: 'ADMIN' | 'SELLER';
+  role: 'ADMIN' | 'USER';
   isEmailVerified: boolean;
   username: string;
 };

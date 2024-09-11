@@ -36,7 +36,10 @@ const formSchema = z.object({
       message: 'Full name cannot be more than 120 characters long.'
     }),
   email: z.string().email(),
-  password: z.string().min(1, { message: 'Password is required.' }),
+  password: z
+    .string()
+    .min(7, { message: 'Password must be atleast 7 characters long.' })
+    .max(32, { message: 'Password must not be more than 32 characters long.' }),
   username: z
     .string()
     .min(3, { message: 'Username must be atleast 3 characters long.' })

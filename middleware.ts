@@ -13,7 +13,10 @@ export async function middleware(request: NextRequest) {
     path === '/payments' ||
     path === '/categories';
   const userPath =
-    path === '/checkout' || path === '/confirm-payment' || path === '/payment';
+    path === '/checkout' ||
+    path === '/confirm-payment' ||
+    path === '/payment' ||
+    path === '/profile';
 
   const token = request.cookies.get(COOKIES.ACCESS_TOKEN)?.value;
   const user = request.cookies.get(COOKIES.USER)?.value;
@@ -33,6 +36,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    '/profile',
     '/login',
     '/register',
     '/checkout',

@@ -44,27 +44,32 @@ const formSchema = z.object({
 });
 
 const ProfileInformationUpdateDialog = () => {
-  const { data, isLoading, error } = useProfile();
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
-
   const [open, setOpen] = useState(false);
 
-  if (!data?.data) return null;
-  const { fullName, username, email } = data.data;
+  const { data, isLoading, error } = useProfile();
+  const mutation = usePatchProfileInformation();
+
+  // if (!data?.data) return <p>Loading...</p>;
+  const { fullName, username, email } = data?.data || {};
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName,
-      email,
-      username
+      fullName: fullName || '',
+      email: email || '',
+      username: username || ''
     }
   });
 
-  const mutation = usePatchProfileInformation();
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!fullName || !username || !email) {
+      toast.error('All fields must have values', { id: TOAST_KEY_ANNOUNCE });
+      return;
+    }
+
     const payload = filterDuplicateFromObjects(values, {
       fullName,
       username,

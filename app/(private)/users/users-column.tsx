@@ -6,10 +6,6 @@ import { ColumnDef } from '@tanstack/react-table';
 
 export const columns: ColumnDef<User>[] = [
   {
-    accessorKey: '_id',
-    header: 'User Id'
-  },
-  {
     accessorKey: 'username',
     header: 'Username'
   },
@@ -18,9 +14,13 @@ export const columns: ColumnDef<User>[] = [
     header: 'Email'
   },
   {
-    id: 'avatar.url',
-    accessorKey: 'avatar.url',
+    accessorKey: 'role',
+    header: 'Role'
+  },
+  {
+    id: 'avatar',
+    accessorKey: 'avatar',
     header: 'Avatar',
-    cell: ({ row }) => <Img imgSrc={row.getValue('avatar.url')} />
+    cell: ({ row }) => <Img imgSrc={row.getValue('avatar')} />
   }
 ];

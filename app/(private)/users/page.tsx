@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import UserAddDialog from './UserAddDialog';
 import { UserTable } from './UserTable';
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
         <p className="text-3xl font-extrabold">Users</p>
         <div className="flex justify-between">
           <span className="text-mutedtext">All Users</span>
-          <Button>Add User</Button>
+          <UserAddDialog/>
         </div>
       </div>
 

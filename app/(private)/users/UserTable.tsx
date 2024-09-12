@@ -9,12 +9,9 @@ export const UserTable = () => {
   const { data, isLoading } = useUsers({ page: 1, limit: 8 });
 
   if (isLoading) return <TableSkeleton />;
+  console.log(data?.data);
 
   return (
-    <div>
-      {data?.data.users && (
-        <DataTable columns={columns} data={data.data.users} />
-      )}
-    </div>
+    <div>{data?.data && <DataTable columns={columns} data={data.data} />}</div>
   );
 };

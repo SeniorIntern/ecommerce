@@ -1,4 +1,5 @@
 export { default as useAddCategory } from './useAddCategory';
+export { default as useAddUser } from './useAddUser';
 export { default as useCategories } from './useCategories';
 export { default as useCategoryProducts } from './useCategoryProducts';
 export { default as useDeleteCategory } from './useDeleteCategory';

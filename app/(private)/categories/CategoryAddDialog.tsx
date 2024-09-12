@@ -20,6 +20,7 @@ import { Input } from '@/components/ui/input';
 import { TOAST_KEY_ANNOUNCE } from '@/constants';
 import { useAddCategory } from '@/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -34,6 +35,8 @@ const formSchema = z.object({
 });
 
 const CategoryAddDialog = () => {
+  const [open, setOpen] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,6 +51,7 @@ const CategoryAddDialog = () => {
     const { categoryName } = values;
     try {
       mutate(categoryName);
+      setOpen(false);
     } catch (err) {
       if (err instanceof Error)
         toast.error(err.message, { id: TOAST_KEY_ANNOUNCE });
@@ -56,7 +60,7 @@ const CategoryAddDialog = () => {
 
   return (
     <div>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button>Add Category</Button>
         </DialogTrigger>

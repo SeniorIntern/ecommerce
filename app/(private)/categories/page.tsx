@@ -1,4 +1,4 @@
-import CategoryActionDialog from './CategoryActionDialog';
+import CategoryAddDialog from './CategoryAddDialog';
 import CategoryTable from './CategoryTable';
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
         <p className="text-3xl font-extrabold">Categories</p>
         <div className="flex justify-between">
           <span className="text-mutedtext">All Categories</span>
-          <CategoryActionDialog actionType="POST" />
+          <CategoryAddDialog  />
         </div>
       </div>
 

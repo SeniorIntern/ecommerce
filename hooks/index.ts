@@ -1,6 +1,7 @@
 export { default as useAddCategory } from './useAddCategory';
 export { default as useCategories } from './useCategories';
 export { default as useCategoryProducts } from './useCategoryProducts';
+export { default as useDeleteCategory } from './useDeleteCategory';
 export { default as useMyOrders } from './useMyOrders';
 export { default as useOrders } from './useOrders';
 export { default as usePatchProfileInformation } from './usePatchProfileInformation';

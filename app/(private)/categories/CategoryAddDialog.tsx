@@ -33,11 +33,7 @@ const formSchema = z.object({
     })
 });
 
-type Props = {
-  actionType: 'POST' | 'PATCH';
-};
-
-const CategoryActionDialog = ({ actionType }: Props) => {
+const CategoryAddDialog = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -62,14 +58,11 @@ const CategoryActionDialog = ({ actionType }: Props) => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>{actionType === 'POST' ? 'Add' : 'Update'} Category</Button>
+          <Button>Add Category</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>
-              {actionType === 'POST' ? 'Add New ' : 'Update '}
-              Category
-            </DialogTitle>
+            <DialogTitle>Create New Category</DialogTitle>
           </DialogHeader>
 
           <Form {...form}>
@@ -98,4 +91,4 @@ const CategoryActionDialog = ({ actionType }: Props) => {
   );
 };
 
-export default CategoryActionDialog;
+export default CategoryAddDialog;

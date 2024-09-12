@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import CategoryActionDialog from './CategoryActionDialog';
 import CategoryTable from './CategoryTable';
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
         <p className="text-3xl font-extrabold">Categories</p>
         <div className="flex justify-between">
           <span className="text-mutedtext">All Categories</span>
-          <Button>Add Category</Button>
+          <CategoryActionDialog actionType="POST" />
         </div>
       </div>
 

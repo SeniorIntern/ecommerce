@@ -43,7 +43,7 @@ export default function Page() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: 'nikhil',
-      password: 'nik@123'
+      password: 'nikhil@123'
     }
   });
 

@@ -21,7 +21,7 @@ const UserDropDown = () => {
       label: 'Profile'
     },
     {
-      href: '/orders',
+      href: '/my-orders',
       label: 'Orders'
     },
     {

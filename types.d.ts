@@ -166,11 +166,20 @@ type ProfileInformationPatchResponse = ApiResponseInfo & {
   };
 };
 
-type ChangePasswordResponse = ApiResponseInfo & {
+type ChangePasswordResponse = ApiResponseInfo & {};
 
-}
+type AddCategoryResponse = ApiResponseInfo & {
+  data: {
+    categoryName: string;
+    owner: string;
+    _id: string;
+  };
+};
+
+type UpdateCategoryResponse = AddCategoryResponse;
 
 export {
+  AddCategoryResponse,
   Address,
   AddressFetchResponse,
   AllOrdersFetchResponse,
@@ -178,6 +187,7 @@ export {
   AvatarUploadResponse,
   Category,
   CategoryFetchResponse,
+  ChangePasswordResponse,
   LoginReponse,
   Order,
   PaginationParams,
@@ -188,7 +198,7 @@ export {
   RegistrationReponse,
   Session,
   SingleProductsFetchResponse,
+  UpdateCategoryResponse,
   User,
-  UsersFetchResponse,
-ChangePasswordResponse
+  UsersFetchResponse
 };

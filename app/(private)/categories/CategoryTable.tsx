@@ -6,9 +6,9 @@ import TableSkeleton from '../TableSkeleton';
 import { columns } from './category-columns';
 
 const CategoryTable = () => {
-  const { data, isLoading } = useCategories({ page: 1, limit: 8 });
-
+  const { data, isLoading, error } = useCategories({ page: 1, limit: 8 });
   if (isLoading) return <TableSkeleton />;
+  if (error) return <p>{error.message}</p>;
 
   return (
     <div>

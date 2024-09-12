@@ -67,10 +67,7 @@ type User = {
 };
 
 type UsersFetchResponse = ApiResponseInfo & {
-  data: {
-    users: User[];
-    totalUsers: number;
-  };
+  data: User[];
 };
 
 type LoginReponse = ApiResponseInfo & {

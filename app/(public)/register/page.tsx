@@ -18,8 +18,8 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { TOAST_KEY_AUTH } from '@/constants';
-import { apiClient } from '@/services';
-import { RegistrationReponse } from '@/types';
+import { useAddUser } from '@/hooks';
+import { UserRegistrationFormSchema } from '@/Schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
 import Link from 'next/link';
@@ -28,33 +28,13 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-const formSchema = z.object({
-  fullName: z
-    .string()
-    .min(3, { message: 'Full name cannot be less than 3 characters.' })
-    .max(50, {
-      message: 'Full name cannot be more than 120 characters long.'
-    }),
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(7, { message: 'Password must be atleast 7 characters long.' })
-    .max(32, { message: 'Password must not be more than 32 characters long.' }),
-  username: z
-    .string()
-    .min(3, { message: 'Username must be atleast 3 characters long.' })
-    .max(50, {
-      message: 'Username cannot be more than 120 characters long.'
-    })
-});
-
-export type RegisterDataType = z.infer<typeof formSchema>;
+export type RegisterDataType = z.infer<typeof UserRegistrationFormSchema>;
 
 export default function Page() {
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof UserRegistrationFormSchema>>({
+    resolver: zodResolver(UserRegistrationFormSchema),
     defaultValues: {
       fullName: '',
       email: '',
@@ -63,13 +43,12 @@ export default function Page() {
     }
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  const { mutate, isPending } = useAddUser();
+
+  async function onSubmit(values: z.infer<typeof UserRegistrationFormSchema>) {
     try {
-      const res = await apiClient.post<RegistrationReponse>(
-        '/users/register',
-        values
-      );
-      toast.success(res.data.message, { id: TOAST_KEY_AUTH });
+      mutate(values);
+      toast.success('User registration sucessfull', { id: TOAST_KEY_AUTH });
       router.push('/login');
     } catch (err) {
       if (err instanceof AxiosError) {
@@ -165,7 +144,7 @@ export default function Page() {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button disabled={isPending} type="submit" className="w-full">
                 Create an account
               </Button>
 

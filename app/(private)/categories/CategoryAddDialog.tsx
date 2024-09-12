@@ -44,7 +44,7 @@ const CategoryAddDialog = () => {
     }
   });
 
-  const { mutate } = useAddCategory();
+  const { mutate, isPending } = useAddCategory();
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
@@ -84,8 +84,8 @@ const CategoryAddDialog = () => {
                   </FormItem>
                 )}
               />
-              <Button className="w-full" type="submit">
-                Submit
+              <Button disabled={isPending} className="w-full" type="submit">
+                {isPending ? 'Submitting' : 'Submit'}
               </Button>
             </form>
           </Form>

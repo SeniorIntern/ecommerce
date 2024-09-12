@@ -133,7 +133,7 @@ const UserAddDialog = () => {
                   )}
                 />
                 <Button disabled={isPending} type="submit" className="w-full">
-                  Create user
+                  {isPending ? 'Creating User' : 'Create User'}
                 </Button>
               </form>
             </Form>

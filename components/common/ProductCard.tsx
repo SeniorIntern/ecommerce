@@ -16,7 +16,7 @@ const ProductCard = ({ product }: Props) => {
         <div className="relative h-[240px]">
           <Img
             className="size-full transition duration-300 ease-in-out hover:scale-110"
-            imgSrc={ProductPlaceholderImage || product.mainImage}
+            imgSrc={product.mainImage || ProductPlaceholderImage}
             imgClass="rounded-none"
           />
           <Badge variant="secondary" className="absolute bottom-2 right-2 px-4">

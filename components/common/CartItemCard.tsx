@@ -2,8 +2,8 @@ import { cn } from '@/lib/utils';
 import ProductPlaceholderImage from '@/public/product/productPlaceholder.jpg';
 import { CartProduct } from '@/store/cart';
 import { Trash } from 'lucide-react';
-import Img from '../reusables/Img';
 import Link from 'next/link';
+import Img from '../reusables/Img';
 
 type Props = {
   item: CartProduct;
@@ -20,13 +20,15 @@ const CartItemCard = ({ item, className, removeProductFromCart }: Props) => {
       )}
     >
       <div className="h-20 w-1/4">
-        <Img className="size-full" imgSrc={ProductPlaceholderImage} />
+        <Link href={`/products/${item._id}`}>
+          <Img className="size-full" imgSrc={ProductPlaceholderImage} />
+        </Link>
       </div>
 
       <div className="flex grow items-start justify-between">
         <div>
           <Link href={`/products/${item._id}`}>
-            <p>{item.productName}</p>
+            <p className="font-semibold">{item.productName}</p>
           </Link>
           <p>Quantity: {item.quantity}</p>
           <p>

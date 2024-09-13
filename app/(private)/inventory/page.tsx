@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
 import { InventoryTable } from './InventoryTable';
+import ProductAddDialog from './ProductAddDialog';
 
 export default function Page() {
   return (
@@ -8,7 +8,7 @@ export default function Page() {
         <p className="text-3xl font-extrabold">Products</p>
         <div className="flex justify-between">
           <span className="text-mutedtext">All Products</span>
-          <Button>Add Product</Button>
+          <ProductAddDialog/>
         </div>
       </div>
 

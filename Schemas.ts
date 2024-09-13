@@ -1,5 +1,64 @@
 import { z } from 'zod';
 
+const ProductSchema = z.object({
+  productName: z
+    .string()
+    .min(2, {
+      message: 'Product name must be at least 2 characters.'
+    })
+    .max(240, {
+      message: 'Product name must be less than 240 characters.'
+    }),
+  price: z
+    .union([
+      z.coerce
+        .number({
+          message: 'Price must be a number'
+        })
+        .min(1)
+        .max(240)
+        .int({
+          message: 'Price must be a whole number'
+        })
+        .positive({
+          message: 'Price must be positive'
+        }),
+      z.literal('')
+    ]),
+  category: z
+    .string()
+    .min(2, {
+      message: 'Category must be at least 2 characters.'
+    })
+    .max(240, {
+      message: 'Category must be less than 240 characters.'
+    }),
+  description: z
+    .string()
+    .min(2, {
+      message: 'Product description must be at least 10 characters long'
+    })
+    .max(800, {
+      message: 'Product description must not be more than 800 characters long'
+    }),
+  stock: z
+    .union([
+      z.coerce
+        .number({
+          message: 'Stock must be a number'
+        })
+        .min(1)
+        .max(240)
+        .int({
+          message: 'Stock must be a whole number'
+        })
+        .positive({
+          message: 'Stock must be positive'
+        }),
+      z.literal('')
+    ])
+});
+
 const UserRegistrationFormSchema = z.object({
   fullName: z
     .string()
@@ -20,4 +79,4 @@ const UserRegistrationFormSchema = z.object({
     })
 });
 
-export { UserRegistrationFormSchema };
+export { ProductSchema, UserRegistrationFormSchema };

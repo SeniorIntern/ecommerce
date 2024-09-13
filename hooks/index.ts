@@ -7,6 +7,7 @@ export { default as useDeleteProduct } from './useDeleteProduct';
 export { default as useMyOrders } from './useMyOrders';
 export { default as useOrders } from './useOrders';
 export { default as usePatchProduct } from './usePatchProduct';
+export { default as usePatchProductImages } from './usePatchProductImages';
 export { default as usePatchProfileInformation } from './usePatchProfileInformation';
 export { default as useProduct } from './useProduct';
 export { default as useProducts } from './useProducts';

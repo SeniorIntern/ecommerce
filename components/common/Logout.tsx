@@ -10,7 +10,7 @@ const Logout = () => {
         'use server';
         await logout();
       }}
-      className=""
+      className="w-full"
     >
       <Button className="w-full" variant="destructive">
         Logout

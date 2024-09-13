@@ -9,7 +9,7 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 import { TOAST_KEY_ANNOUNCE } from '@/constants';
-import useAddProduct from '@/hooks/useAddProduct';
+import { usePatchProductImages } from '@/hooks';
 import { Product } from '@/types';
 import { FormEvent, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -42,7 +42,7 @@ const ProductImgUpdateDialog = ({ product }: { product: Product }) => {
     maxFiles: 4
   });
 
-  const { mutate, isPending } = useAddProduct();
+  const { mutate, isPending } = usePatchProductImages(product._id);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -98,7 +98,7 @@ const ProductImgUpdateDialog = ({ product }: { product: Product }) => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <button className="rounded bg-green-500 px-2 py-1 text-white hover:bg-green-500/80">
-            Update Images 
+            Update Images
           </button>
         </DialogTrigger>
 
@@ -108,10 +108,7 @@ const ProductImgUpdateDialog = ({ product }: { product: Product }) => {
           </DialogHeader>
 
           <div>
-            <form
-              onSubmit={onSubmit}
-              className="h-[80vh] space-y-8 overflow-scroll p-2"
-            >
+            <form onSubmit={onSubmit} className="space-y-8 overflow-scroll p-2">
               <div className="cursor-pointer rounded-lg border-2 border-dotted border-gray-400 p-8">
                 <div {...mainImgGetRootProps()}>
                   <input name="mainImage" {...mainImgGetInputProps()} />
@@ -154,7 +151,7 @@ const ProductImgUpdateDialog = ({ product }: { product: Product }) => {
                 </div>
               </div>
               <Button disabled={isPending} type="submit" className="w-full">
-                {isPending ? 'Submitting' : 'Add Product'}
+                {isPending ? 'Submitting' : 'Update Images'}
               </Button>
             </form>
           </div>

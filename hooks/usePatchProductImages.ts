@@ -4,18 +4,21 @@ import { SingleProductsFetchResponse } from '@/types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-const usePatchProductImages = () => {
+const usePatchProductImages = (productId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (values:FormData) =>
+    mutationFn: (values: FormData) =>
       apiClient
-        .post<SingleProductsFetchResponse>('/products', values)
+        .patch<SingleProductsFetchResponse>(
+          `/products/images/${productId}`,
+          values
+        )
         .then((res) => res.data),
     onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [QUERY_KEY_PRODUCTS] });
-      toast.success('New product added', {
+      toast.success('Product images updated', {
         id: TOAST_KEY_ANNOUNCE
       });
     }

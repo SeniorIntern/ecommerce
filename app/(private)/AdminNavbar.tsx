@@ -1,3 +1,4 @@
+import Logout from '@/components/common/Logout';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -33,7 +34,7 @@ export const AdminNavbar = () => {
             ))}
             <DropdownMenuSeparator />
             <DropdownMenuItem className="focus:bg-secondary">
-              LogOut
+              <Logout />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

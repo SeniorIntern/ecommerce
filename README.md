@@ -33,6 +33,6 @@ Example of environment variables is provided in `.env.example`
 
 ```env
 NEXT_PUBLIC_BASE_URL='http://localhost:8080/api/v1'
-NEXT_PUBLIC_STRIPE_PUBIC='pk_test_123'
-NEXT_PUBLIC_STRIPE_SECRET='sk_test_123'
+NEXT_PUBLIC_STRIPE_PUBLIC_KEY='pk_test_123'
+STRIPE_SECRET_KEY='sk_test_123' # don't make secret key public(visible in client)
 ```

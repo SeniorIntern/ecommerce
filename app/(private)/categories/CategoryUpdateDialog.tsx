@@ -17,7 +17,7 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useDeleteCategory, useUpdateCategory } from '@/hooks';
+import { useUpdateCategory } from '@/hooks';
 import { Category } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -35,7 +35,7 @@ export function CategoryUpdateDialog({ category }: { category: Category }) {
     }
   });
 
-  const { mutate } = useUpdateCategory();
+  const { mutate, isPending } = useUpdateCategory();
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     mutate({
@@ -47,7 +47,7 @@ export function CategoryUpdateDialog({ category }: { category: Category }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="rounded bg-green-500 px-2 py-1 text-white hover:bg-green-500/80 hover:bg-red-600">
+        <button className="rounded bg-green-500 px-2 py-1 text-white hover:bg-green-500/80">
           Update
         </button>
       </DialogTrigger>
@@ -71,7 +71,9 @@ export function CategoryUpdateDialog({ category }: { category: Category }) {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button disabled={isPending} type="submit">
+              {isPending ? 'Updating' : 'Update'}
+            </Button>
           </form>
         </Form>
       </DialogContent>

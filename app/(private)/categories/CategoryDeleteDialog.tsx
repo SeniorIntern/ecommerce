@@ -24,7 +24,7 @@ const CategoryDeleteDialog = ({ handleDelete }: Props) => {
         </DialogTrigger>
         <DialogContent className="max-w-fit">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>Delete the category</DialogTitle>
           </DialogHeader>
           <div className="space-y-2">
             <p className="">Are you sure you want to delete this category?</p>

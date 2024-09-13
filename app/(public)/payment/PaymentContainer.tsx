@@ -17,11 +17,12 @@ const PaymentContainer = ({ amount }: { amount: number }) => {
   const [loading, setLoading] = useState(false);
 
   let baseUrl = 'http://www.localhost:3000';
-  if (window) {
-    baseUrl = window.location.origin;
-  }
 
   useEffect(() => {
+    if (window) {
+      baseUrl = window.location.origin;
+    }
+
     fetch('/api/create-payment-intent', {
       method: 'POST',
       headers: {

@@ -61,7 +61,11 @@ export default function Page() {
               <Trash size={16} />
             </Button>
             <Button
-              onClick={() => router.push('/payment')}
+              onClick={() => {
+                toast.success('Not implemented lol', {
+                  id: TOAST_KEY_ANNOUNCE
+                });
+              }}
               className="flex items-center gap-2"
             >
               Proceed to payment

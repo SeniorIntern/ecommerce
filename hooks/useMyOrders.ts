@@ -1,12 +1,15 @@
 import { QUERY_KEY_ORDERS } from '@/constants';
-import { ordersService } from '@/services';
-import { AllOrdersFetchResponse, PaginationParams } from '@/types';
+import { apiClient } from '@/services';
+import { MyOrdersFetchResonse, PaginationParams } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 
 const useMyOrders = ({ page, limit }: PaginationParams) => {
-  return useQuery<AllOrdersFetchResponse, Error>({
+  return useQuery<MyOrdersFetchResonse>({
     queryKey: [QUERY_KEY_ORDERS, 'user'],
-    queryFn: () => ordersService.get(page, limit)
+    queryFn: () =>
+      apiClient
+        .get<MyOrdersFetchResonse>('/orders/my-orders')
+        .then((res) => res.data)
   });
 };
 

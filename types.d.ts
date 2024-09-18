@@ -103,22 +103,28 @@ type AddressFetchResponse = ApiResponseInfo & {
   data: Address;
 };
 
+type MyOrdersFetchResonse = ApiResponseInfo & {
+  data: {
+    orders: Order[];
+  };
+};
+
 type Order = {
   _id: string;
-  address: Address;
-  coupon: null | string;
-  customer: {
-    _id: string;
-    email: string;
-    username: string;
-  };
-  discountedOrderPrice: number;
-  isPaymentDone: boolean;
-  orderPrice: number;
-  paymentId: string;
-  paymentProvider: 'PAYPAL';
-  status: 'PENDING' | 'DELIVERED' | 'CANCELLED';
-  totalOrderItems: number;
+  userId: string;
+  orderItems: [
+    {
+      productId: {
+        _id: string;
+        productName: string;
+        price: number;
+      };
+      quantity: number;
+      price: number;
+      _id: string;
+    }
+  ];
+  totalPrice: number;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -186,6 +192,7 @@ export {
   CategoryFetchResponse,
   ChangePasswordResponse,
   LoginReponse,
+  MyOrdersFetchResonse,
   Order,
   PaginationParams,
   Product,

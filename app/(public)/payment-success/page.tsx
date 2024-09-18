@@ -1,30 +1,43 @@
 'use client';
 
-import { useProfile } from '@/hooks';
+import { TOAST_KEY_ANNOUNCE } from '@/constants';
+import { apiClient } from '@/services';
 import useCartStore from '@/store/cart';
+import { AxiosError } from 'axios';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 export default function Page({
   searchParams: { amount }
 }: {
   searchParams: { amount: string };
 }) {
-  const { data, isLoading, error } = useProfile();
   const { cartItems, resetCart } = useCartStore();
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>{error.message}</p>;
-
-  function makeOrderRecord() {
-    const userId = data?.data._id;
-    console.log('make backend request to create order record');
-    console.log({
-      userId,
-      orderItems: cartItems
-    });
-
-    // resetCart();
-  }
-  makeOrderRecord();
+  useEffect(() => {
+    // const controller = new AbortController();
+    if (cartItems.length) {
+      console.log('cartItems===', cartItems);
+      apiClient
+        .post('/orders', {
+          orderItems: cartItems
+        })
+        .then(() => {
+          resetCart()
+          toast.success('Payment is successfull. Thank You!', {
+            id: TOAST_KEY_ANNOUNCE
+          });
+        })
+        .catch((err) => {
+          if (err instanceof AxiosError) {
+            console.log('AxiosError===', err);
+            toast.success('Payment was unsuccessfull.', {
+              id: TOAST_KEY_ANNOUNCE
+            });
+          }
+        });
+    }
+  }, [cartItems]);
 
   return (
     <main className="m-10 mx-auto max-w-6xl rounded-md border bg-gradient-to-tr from-blue-500 to-purple-500 p-10 text-center text-white">

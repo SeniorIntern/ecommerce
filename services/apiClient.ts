@@ -12,4 +12,15 @@ const apiClient = axios.create({
   }
 });
 
+// ensure the cookie is fetched fresh for each request.
+apiClient.interceptors.request.use((config) => {
+  const token = getCookie(COOKIES.ACCESS_TOKEN); // Fetch latest token
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
+});
+
 export default apiClient;

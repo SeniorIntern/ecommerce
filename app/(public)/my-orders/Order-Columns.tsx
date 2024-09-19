@@ -29,6 +29,6 @@ export const columns: ColumnDef<Order>[] = [
     id: 'createdAt',
     accessorKey: 'createdAt',
     header: 'Order Date',
-    cell: ({ row }) => <span>{formatDate(row.original.updatedAt)}</span>
+    cell: ({ row }) => <span>{formatDate(row.getValue('createdAt'))}</span>
   }
 ];

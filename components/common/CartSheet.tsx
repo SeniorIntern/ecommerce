@@ -75,10 +75,7 @@ const CartSheet = () => {
                 <p>${getCartTotal(cartItems)}</p>
               </div>
 
-              <Button
-                className="w-full"
-                onClick={() => router.push('/checkout')}
-              >
+              <Button className="w-full" onClick={() => router.push('/cart')}>
                 Checkout Now
               </Button>
               <div className="mx-auto flex w-fit items-center text-sm text-accent">

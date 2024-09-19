@@ -109,6 +109,22 @@ type MyOrdersFetchResonse = ApiResponseInfo & {
   };
 };
 
+type AdminOrder = {
+  _id: string;
+  userId: User;
+  orderItems: [
+    {
+      productId: string;
+      quantity: number;
+      price: number;
+      _id: string;
+    }
+  ];
+  totalPrice: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 type Order = {
   _id: string;
   userId: string;
@@ -129,10 +145,9 @@ type Order = {
   updatedAt: Date;
 };
 
-type AllOrdersFetchResponse = ApiResponseInfo & {
-  data: PaginationInfo & {
-    orders: Order[];
-    totalOrders: string;
+type AdminAllOrdersFetchResponse = ApiResponseInfo & {
+  data: {
+    orders: AdminOrder[];
   };
 };
 
@@ -185,7 +200,8 @@ export {
   AddCategoryResponse,
   Address,
   AddressFetchResponse,
-  AllOrdersFetchResponse,
+  AdminAllOrdersFetchResponse,
+  AdminOrder,
   AllProductsFetchResponse,
   AvatarUploadResponse,
   Category,

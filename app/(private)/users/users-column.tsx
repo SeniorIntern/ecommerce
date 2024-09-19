@@ -1,6 +1,7 @@
 'use client';
 
 import Img from '@/components/reusables/Img';
+import { Badge } from '@/components/ui/badge';
 import { User } from '@/types';
 import { ColumnDef } from '@tanstack/react-table';
 
@@ -15,7 +16,8 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     accessorKey: 'role',
-    header: 'Role'
+    header: 'Role',
+    cell: ({ row }) => <Badge>{row.getValue('role')}</Badge>
   },
   {
     id: 'avatar',

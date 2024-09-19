@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { OrdersTable } from './OrdersTable';
 
 export default function Page() {
@@ -8,7 +7,6 @@ export default function Page() {
         <p className="text-3xl font-extrabold">Orders</p>
         <div className="flex justify-between">
           <span className="text-mutedtext">All Orders</span>
-          <Button>Add Order</Button>
         </div>
       </div>
 

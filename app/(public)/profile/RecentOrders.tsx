@@ -1,68 +1,27 @@
 'use client';
 
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
-import { formatDate } from '@/helpers';
+import { HorizontalPaddingContainer } from '@/components/reusables/HorizontalPaddingContainer';
 import { useMyOrders } from '@/hooks';
-import AddressInfoDialog from './AddressInfoDialog';
-import RecentOrdersSkeleton from './RecentOrdersSkeleton';
+import { MyOrdersTable } from './MyOrdersTable';
 
 const RecentOrders = () => {
-  return (
-    <div className='space-y-2'>
-      <h2 className="text-xl">Recent Orders</h2>
-      <p>Under construction lol</p>
-    </div>
-  );
-
-  /* 
-  const { data, isLoading } = useMyOrders({ page: 1, limit: 8 });
-
-  if (isLoading) return (
-    <RecentOrdersSkeleton/>
-  )
+  const { isLoading, error, data } = useMyOrders({
+    page: 1,
+    limit: 12
+  });
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
-    <div>
-      <p>Recent Orders</p>
-      <Table>
-        <TableCaption>A list of your recent orders.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Order #</TableHead>
-            <TableHead>Placed On</TableHead>
-            <TableHead>Price (Discounted)</TableHead>
-            <TableHead>Order info</TableHead>
-            <TableHead>Delivery address</TableHead>
-          </TableRow>
-        </TableHeader>
-
-        <TableBody>
-          {data?.data.orders.map((order) => (
-            <TableRow key={order._id}>
-              <TableCell>{order._id}</TableCell>
-              <TableCell className="font-medium">
-                {formatDate(order.createdAt)}
-              </TableCell>
-              <TableCell>${order.discountedOrderPrice}</TableCell>
-              <TableCell>{order.address.addressLine1}</TableCell>
-              <TableCell>
-                <AddressInfoDialog address={order.address} />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+    <section className="my-10">
+      <HorizontalPaddingContainer>
+        <div className="space-y-3">
+          <h1 className="text-xl">My orders</h1>
+          <MyOrdersTable />
+        </div>
+      </HorizontalPaddingContainer>
+    </section>
   );
-*/
 };
 
 export default RecentOrders;

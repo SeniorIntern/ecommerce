@@ -8,12 +8,26 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog';
+import { TOAST_KEY_ANNOUNCE } from '@/constants';
+import { useDeleteProduct } from '@/hooks';
+import { Product } from '@/types';
+import { toast } from 'sonner';
 
-type Props = {
-  handleDelete: () => void;
-};
+const ProductDeleteDialog = ({ product }: { product: Product }) => {
+  const { mutate: deleteProduct } = useDeleteProduct(); // Use mutation hook to delete category
+  const handleDelete = () => {
+    deleteProduct(product._id, {
+      onSuccess: () =>
+        toast.success('Product deleted successfully', {
+          id: TOAST_KEY_ANNOUNCE
+        }),
+      onError: () =>
+        toast.error('Failed to delete the product', {
+          id: TOAST_KEY_ANNOUNCE
+        })
+    });
+  };
 
-const ProductDeleteDialog = ({ handleDelete }: Props) => {
   return (
     <div>
       <Dialog>
@@ -28,7 +42,11 @@ const ProductDeleteDialog = ({ handleDelete }: Props) => {
           </DialogHeader>
           <div className="space-y-2">
             <p className="">Are you sure you want to delete this product?</p>
-            <Button className='w-full' variant="destructive" onClick={handleDelete}>
+            <Button
+              className="w-full"
+              variant="destructive"
+              onClick={handleDelete}
+            >
               Confirm
             </Button>
           </div>

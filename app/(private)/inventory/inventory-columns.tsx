@@ -2,11 +2,8 @@
 
 import Img from '@/components/reusables/Img';
 import { Badge } from '@/components/ui/badge';
-import { TOAST_KEY_ANNOUNCE } from '@/constants';
-import { useDeleteProduct } from '@/hooks';
 import { Product } from '@/types';
 import { ColumnDef } from '@tanstack/react-table';
-import { toast } from 'sonner';
 import ProductDeleteDialog from './ProductDeleteDialog';
 import ProductImgUpdateDialog from './ProductImgUpdateDialog';
 import { ProductInfoUpdateDialog } from './ProductInfoUpdateDialog';
@@ -46,25 +43,11 @@ export const columns: ColumnDef<Product>[] = [
     id: 'actions',
     header: 'Actions',
     cell: ({ row }) => {
-      const { mutate: deleteProduct } = useDeleteProduct(); // Use mutation hook to delete category
       const product = row.original; // Access the entire row's data
-
-      const handleDelete = () => {
-        deleteProduct(product._id, {
-          onSuccess: () =>
-            toast.success('Product deleted successfully', {
-              id: TOAST_KEY_ANNOUNCE
-            }),
-          onError: () =>
-            toast.error('Failed to delete the product', {
-              id: TOAST_KEY_ANNOUNCE
-            })
-        });
-      };
 
       return (
         <span className="flex items-center gap-1">
-          <ProductDeleteDialog handleDelete={handleDelete} />
+          <ProductDeleteDialog product={product} />
           <ProductInfoUpdateDialog product={product} />
           <ProductImgUpdateDialog product={product} />
         </span>

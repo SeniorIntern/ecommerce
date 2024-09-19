@@ -8,12 +8,27 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/components/ui/dialog';
+import { TOAST_KEY_ANNOUNCE } from '@/constants';
+import { useDeleteCategory } from '@/hooks';
+import { Category } from '@/types';
+import { toast } from 'sonner';
 
-type Props = {
-  handleDelete: () => void;
-};
+const CategoryDeleteDialog = ({category} : {category: Category} ) => {
+  const { mutate: deleteCategory } = useDeleteCategory(); // Use mutation hook to delete category
 
-const CategoryDeleteDialog = ({ handleDelete }: Props) => {
+  const handleDelete = () => {
+    deleteCategory(category._id, {
+      onSuccess: () =>
+        toast.success('Category deleted successfully', {
+          id: TOAST_KEY_ANNOUNCE
+        }),
+      onError: () =>
+        toast.error('Failed to delete the category', {
+          id: TOAST_KEY_ANNOUNCE
+        })
+    });
+  };
+
   return (
     <div>
       <Dialog>

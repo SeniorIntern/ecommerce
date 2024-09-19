@@ -8,6 +8,10 @@ const navOptions = [
     option: 'Products'
   },
   {
+    href: '/cart',
+    option: 'Cart'
+  },
+  {
     href: '/about',
     option: 'About'
   },

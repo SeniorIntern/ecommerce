@@ -1,5 +1,5 @@
-import { AllOrdersFetchResponse } from '@/types';
+import { AdminAllOrdersFetchResponse } from '@/types';
 
 import HttpService from './HttpService';
 
-export default new HttpService<AllOrdersFetchResponse>('/orders');
+export default new HttpService<AdminAllOrdersFetchResponse>('/orders');

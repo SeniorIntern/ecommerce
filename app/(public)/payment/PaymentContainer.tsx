@@ -16,7 +16,7 @@ const PaymentContainer = ({ amount }: { amount: number }) => {
   const [clientSecret, setClientSecret] = useState('');
   const [loading, setLoading] = useState(false);
 
-  let baseUrl = 'http://www.localhost:3000';
+  let baseUrl = 'https://ecommerce-indol-kappa.vercel.app';
 
   useEffect(() => {
     if (window) {

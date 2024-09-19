@@ -61,6 +61,7 @@ export default function Page() {
               <Trash size={16} />
             </Button>
             <Button
+              disabled={cartItems.length === 0}
               onClick={() => router.push('/payment')}
               className="flex items-center gap-2"
             >
